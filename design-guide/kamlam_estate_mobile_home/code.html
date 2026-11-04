@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { colors: { 'cream-text': '#F5F0EB', 'on-tertiary': '#3c2f00', 'on-tertiary-fixed-variant': '#574500', 'inverse-on-surface': '#32302e', 'on-primary-fixed': '#291800', 'tertiary-fixed-dim': '#e9c349', 'border-gold-highlight': '#6B583E', 'outline-variant': '#4e453c', 'primary-fixed-dim': '#e3c197', 'on-primary-container': '#503a1a', 'on-secondary-container': '#c0b7b0', 'primary-container': '#c4a47c', 'secondary-container': '#4e4843', 'surface-container-highest': '#363432', 'surface-container': '#211f1d', 'primary-fixed': '#ffddb4', 'surface-tint': '#e3c197', 'border-gold-subtle': '#3D3428', 'tertiary': '#e9c349', 'inverse-primary': '#745a38', 'secondary-fixed-dim': '#cfc5be', 'surface-card': '#1E1A16', 'secondary-fixed': '#ebe0da', 'on-secondary-fixed': '#201b17', 'on-surface-variant': '#d1c4b8', 'inverse-surface': '#e6e2de', 'on-error': '#690005', 'surface-container-high': '#2b2a27', 'secondary': '#cfc5be', 'champagne-light': '#DFCAA0', 'surface-container-low': '#1d1b19', 'error': '#ffb4ab', 'error-container': '#93000a', 'primary': '#e3c197', 'on-primary-fixed-variant': '#5a4222', 'espresso-deep': '#181512', 'on-error-container': '#ffdad6', 'surface-container-lowest': '#0f0e0c', 'on-surface': '#e6e2de', 'on-secondary': '#352f2b', 'sand-muted': '#E2DAD1', 'basalt-obsidian': '#0B0C0A', 'outline': '#9a8f83', 'surface-variant': '#363432', 'background': '#141311', 'surface-dim': '#141311', 'surface-bright': '#3b3936', 'on-background': '#e6e2de', 'surface': '#141311', 'on-secondary-fixed-variant': '#4c4641', 'on-tertiary-container': '#4d3c00', 'on-tertiary-fixed': '#241a00', 'tertiary-container': '#c9a52d', 'smoke-subtle': '#8E867C', 'on-primary': '#412c0e', 'tertiary-fixed': '#ffe088' }, borderRadius: { 'DEFAULT': '0.125rem', 'lg': '0.25rem', 'xl': '0.5rem', 'full': '0.75rem' }, spacing: { 'space-sm': '0.5rem', 'space-md': '1rem', 'margin-desktop': '4rem', 'space-xl': '2.5rem', 'space-lg': '1.5rem', 'margin': '1.25rem', 'margin-tablet': '2.5rem', 'gutter': '1.5rem', 'gutter-desktop': '2.5rem', 'space-3xl': '6rem', 'space-xs': '0.25rem', 'space-2xl': '4rem' }, fontFamily: { 'body-sm': ['Inter'], 'headline-md': ['Playfair Display'], 'headline-sm': ['Playfair Display'], 'title-editorial': ['Playfair Display'], 'display-hero': ['Playfair Display'], 'headline-lg': ['Playfair Display'], 'label-uppercase': ['Inter'], 'display-hero-mobile': ['Playfair Display'], 'body-md': ['Inter'], 'headline-lg-mobile': ['Playfair Display'], 'body-lg': ['Inter'], 'label-button': ['Inter'] }, fontSize: { 'body-sm': ['13px', { lineHeight: '20px', letterSpacing: '0.02em', fontWeight: '400' }], 'headline-md': ['28px', { lineHeight: '36px', letterSpacing: '0em', fontWeight: '500' }], 'headline-sm': ['22px', { lineHeight: '30px', letterSpacing: '0em', fontWeight: '500' }], 'title-editorial': ['18px', { lineHeight: '26px', letterSpacing: '0.01em', fontWeight: '600' }], 'display-hero': ['56px', { lineHeight: '64px', letterSpacing: '-0.02em', fontWeight: '600' }], 'headline-lg': ['40px', { lineHeight: '48px', letterSpacing: '-0.01em', fontWeight: '500' }], 'label-uppercase': ['11px', { lineHeight: '16px', letterSpacing: '0.18em', fontWeight: '600' }], 'display-hero-mobile': ['38px', { lineHeight: '46px', letterSpacing: '-0.01em', fontWeight: '600' }], 'body-md': ['15px', { lineHeight: '24px', letterSpacing: '0.01em', fontWeight: '400' }], 'headline-lg-mobile': ['28px', { lineHeight: '36px', letterSpacing: '0em', fontWeight: '500' }], 'body-lg': ['18px', { lineHeight: '30px', letterSpacing: '0.01em', fontWeight: '400' }], 'label-button': ['13px', { lineHeight: '18px', letterSpacing: '0.08em', fontWeight: '600' }] } } } };</script><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-background font-body-md text-body-md text-on-surface antialiased min-h-screen"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/80 backdrop-blur-xl shadow-[0_4px_24px_rgba(0,0,0,0.35)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><button aria-label="Menu" class="w-11 h-11 flex items-center justify-center text-champagne-light hover:text-primary transition-colors"><span class="material-symbols-outlined text-[24px]">segment</span></button><div class="flex flex-col"><span class="font-label-uppercase text-label-uppercase text-champagne-light tracking-[0.2em] uppercase">Kamlam</span><span class="font-title-editorial text-title-editorial text-cream-text tracking-wide">Portfolio</span></div></div><div class="flex items-center gap-space-sm"><button aria-label="Concierge Direct Call" class="w-11 h-11 flex items-center justify-center text-champagne-light hover:text-primary transition-colors"><span class="material-symbols-outlined text-[20px]">support_agent</span></button><img alt="Profile" class="w-8 h-8 rounded-full object-cover shadow-[0_0_12px_rgba(196,164,124,0.3)]" src="https://lh3.googleusercontent.com/aida/AEtjO1UC0f2kGVIKOHHJFyeLWUc8prSM40H3i1FZvqnimK48_Y0crSakelugrxjmCXKb93TmlLk5CW1EW0sSys02iOS1VFuuAoTYAcBzXK97MtsZHnv4LsNU2oILf86WLjsVmr5T3VYaAjOcZNZjiZUo_LUwTippCHhzu2YirdxP_b1mXsr0WHm1Jg5puJUEP0a1v7QQdn-c6zWH2mt3lzz547ARuNtO3bOv1kf15lE5afZ3MQ"/></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full text-cream-text">
+<!-- HERO SECTION -->
+<section class="relative px-margin pt-space-lg pb-space-2xl overflow-hidden bg-gradient-to-b from-espresso-deep via-surface to-surface">
+<!-- Atmospheric subtle ambient glow -->
+<div class="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Editorial Crest Badge -->
+<div class="flex items-center justify-center gap-space-xs mb-space-md">
+<span class="text-champagne-light text-[10px] tracking-[0.25em] uppercase font-label-uppercase">Heritage Hospitality • Turnkey Yields</span>
+</div>
+<!-- Headline and Core Value Proposition -->
+<div class="text-center space-y-space-sm mb-space-lg">
+<p class="font-label-uppercase text-label-uppercase text-champagne-light uppercase tracking-[0.2em]">
+        Welcome to Kamlam Estate
+      </p>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-cream-text tracking-tight font-headline-md">
+        Your Holiday Home That Pays You Back.
+      </h1>
+<p class="font-body-md text-body-md text-sand-muted max-w-md mx-auto pt-space-xs leading-relaxed">
+        From sourcing the right high-growth property to managing full Airbnb operations and resale support, we handle the complete investment lifecycle.
+      </p>
+</div>
+<!-- Primary Hero Visual Framing (Architectural Terraces) -->
+<div class="relative w-full rounded-lg overflow-hidden shadow-2xl mb-space-lg bg-surface-card">
+<img class="w-full h-72 object-cover object-center" data-alt="Luxurious whitewashed Himalayan mountain villa terrace overlooking misty pine valleys at golden hour with plush outdoor daybeds, textured sandstone walls, warm ambient uplighting, and panoramic cedar forest views." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB02t5nE_vhhejxLh67-vTBZI77c4UqqhWCWbDHcRQAsY1aHd-xnML9f7wPs-9wnGPYnsbbjngmjHVCIQKwkYeJE2jtQwdZv3lWg8JG4lQ9fSP_SkhtnnNqiUkxBPkfbhHZZfsDgtCxrqTBOdLtNuK3AcWFwOZ4dwdqSpUKg3fgwxo_G1jjI8QFx7qChVZNpnPpdlWCaTfIE7TWzgIZecD1L2eM4VN4gTxtLP-njjYC"/>
+<div class="absolute inset-0 bg-gradient-to-t from-basalt-obsidian/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4 flex items-center justify-between text-cream-text">
+<div>
+<span class="font-label-uppercase text-[10px] tracking-widest text-champagne-light uppercase block">North India Foothills</span>
+<p class="font-title-editorial text-title-editorial font-medium">Mussoorie • Kalagaon • Dehradun</p>
+</div>
+<div class="flex items-center gap-1 bg-surface-card/85 backdrop-blur-md px-3 py-1.5 rounded-full text-champagne-light shadow-md">
+<span class="material-symbols-outlined text-[16px] text-tertiary">star</span>
+<span class="font-label-uppercase text-label-uppercase">Top 1% Stays</span>
+</div>
+</div>
+</div>
+<!-- Dual Action CTAs -->
+<div class="flex flex-col sm:flex-row gap-space-sm mb-space-xl">
+<a class="w-full h-12 flex items-center justify-center gap-2 bg-primary text-basalt-obsidian font-label-button text-label-button rounded tracking-wider uppercase transition-all shadow-[0_4px_20px_rgba(196,164,124,0.25)] active:scale-[0.99]" href="https://wa.me/919260926751?text=Hello%2C%20I'm%20Interested%20!" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+        Contact Us on WhatsApp
+      </a>
+<a class="w-full h-12 flex items-center justify-center gap-2 bg-surface-container-high text-cream-text font-label-button text-label-button rounded tracking-wider uppercase transition-colors hover:bg-surface-container-highest" href="#curated-stays">
+<span class="material-symbols-outlined text-[18px]">travel_explore</span>
+        Explore Top Stays
+      </a>
+</div>
+<!-- Key Performance Stat Strip -->
+<div class="grid grid-cols-3 gap-2 p-space-md rounded-xl bg-surface-card shadow-lg">
+<div class="text-center px-1">
+<span class="font-headline-sm text-headline-sm text-champagne-light block">30+</span>
+<span class="font-label-uppercase text-[10px] text-smoke-subtle uppercase leading-tight tracking-wider block mt-1">Properties Managed</span>
+</div>
+<div class="text-center px-1">
+<span class="font-headline-sm text-headline-sm text-champagne-light block">500+</span>
+<span class="font-label-uppercase text-[10px] text-smoke-subtle uppercase leading-tight tracking-wider block mt-1">Happy Guests</span>
+</div>
+<div class="text-center px-1">
+<span class="font-headline-sm text-headline-sm text-champagne-light block">100%</span>
+<span class="font-label-uppercase text-[10px] text-smoke-subtle uppercase leading-tight tracking-wider block mt-1">End-to-End Hands-off</span>
+</div>
+</div>
+</section>
+<!-- ABOUT KAMLAM & PHILOSOPHY -->
+<section class="px-margin py-space-xl bg-espresso-deep relative">
+<div class="max-w-md mx-auto space-y-space-md">
+<div class="text-center space-y-space-xs">
+<span class="font-label-uppercase text-label-uppercase text-champagne-light uppercase tracking-[0.2em]">
+          About Kamlam
+        </span>
+<h2 class="font-headline-md text-headline-md text-cream-text tracking-tight">
+          End-to-End Real Estate Investment for High-Performing Short-Term Rentals
+        </h2>
+</div>
+<p class="font-body-md text-body-md text-sand-muted leading-relaxed text-center">
+        We help investors buy and build high-yield short-term rental properties in North India. From property discovery and acquisition to renovation, operations, revenue generation, and resale support, we offer a complete turnkey solution designed to maximize returns while keeping ownership effortless.
+      </p>
+<!-- Vision & Mission Split Cards -->
+<div class="space-y-space-md pt-space-sm">
+<!-- Vision -->
+<div class="p-space-lg rounded-xl bg-surface-container-high transition-transform duration-300 shadow-md">
+<div class="flex items-center gap-space-sm mb-space-sm">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-champagne-light">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</div>
+<h3 class="font-title-editorial text-title-editorial text-cream-text">Our Vision</h3>
+</div>
+<p class="font-body-sm text-body-sm text-sand-muted leading-relaxed">
+            To build one of North India’s most trusted and high-performing short-term rental portfolios, where real estate is not just owned, but actively managed to generate consistent, scalable income.
+          </p>
+</div>
+<!-- Mission -->
+<div class="p-space-lg rounded-xl bg-surface-container-high transition-transform duration-300 shadow-md">
+<div class="flex items-center gap-space-sm mb-space-sm">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-champagne-light">
+<span class="material-symbols-outlined text-[20px]">flag</span>
+</div>
+<h3 class="font-title-editorial text-title-editorial text-cream-text">Our Mission</h3>
+</div>
+<p class="font-body-sm text-body-sm text-sand-muted leading-relaxed">
+            To help property owners and investors unlock the true earning potential of their real estate through structured acquisition, thoughtful design, and professional end-to-end management.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- PREFABRICATED LUXURY STRUCTURES SECTION -->
+<section class="px-margin py-space-2xl bg-surface">
+<div class="space-y-space-md">
+<div class="space-y-space-xs">
+<span class="font-label-uppercase text-label-uppercase text-champagne-light uppercase tracking-[0.2em]">
+          Prefabricated Luxury Structures
+        </span>
+<h2 class="font-headline-md text-headline-md text-cream-text tracking-tight">
+          We Build Modern Prefabricated Homes With Faster Delivery, Superior Quality, and Lasting Value
+        </h2>
+</div>
+<p class="font-body-md text-body-md text-sand-muted leading-relaxed">
+        Your dream home deserves more than just construction—it deserves thoughtful design, quality craftsmanship, and lasting value. We specialize in building premium prefabricated homes, from studio rooms and 1-4 BHK residences to luxury hillside villas, farmhouses, and fully customized architectural retreats.
+      </p>
+<!-- Prefab Showcase Gallery -->
+<div class="space-y-space-md pt-space-xs">
+<div class="rounded-xl overflow-hidden bg-surface-card shadow-lg">
+<img class="w-full h-56 object-cover" data-alt="Modern alpine prefabricated A-frame wooden chalet in Mussoorie forest with floor-to-ceiling glass windows glowing with warm interior lamps at dusk, surrounded by cedar pine trees and manicured stone pathway." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgXDeGY4Kw6z6KbWt8N-7DqB1p1mt1j__ZU9g2DKaOzorltQNjZkf4Dq_wYdIjYTeTnT4OUvV2C-IVUdBOe_ibetmwG8Yl1F07D2uD4tHVwmvOhhnzzssqHTyB5I761sRZ1GBJweae1AAo1GVKws9LL5p5w6S5hSf7Qds-CX4J2awQe7b1bXx8sJqPka6VsBF3sAgyOixqeilfcOmRV4270TJpAf5vwCCu2xFt6_Vh"/>
+<div class="p-space-md">
+<div class="flex justify-between items-center mb-1">
+<span class="font-title-editorial text-title-editorial text-cream-text">Wood &amp; Steel Composite Villas</span>
+<span class="text-champagne-light font-label-uppercase text-[11px] bg-primary/10 px-2 py-0.5 rounded">2,500 - 4,500 SQ. FT.</span>
+</div>
+<p class="font-body-sm text-body-sm text-smoke-subtle">
+              Engineered with advanced steel composite structures and weather-resistant Himalayan timber for lifetime durability.
+            </p>
+</div>
+</div>
+<div class="rounded-xl overflow-hidden bg-surface-card shadow-lg">
+<img class="w-full h-52 object-cover" data-alt="Exterior shot of a modular luxury vacation cabin with a sweeping wooden deck, bespoke teak outdoor furniture, outdoor firepit, and misty mountain views in North India." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqR6fojUv9yzLevV3ja_9XwKh-dMtT4EpibThZH95DzrDEEylXopm_dxvs_UJCKQg_QntLIlBGCdCsHuNp0ZQGTwIQSAiHeOJBM1kHcmNThmV1NQmrXeIYmy1rKiOrAsC1VuDkvB7TSQYOz_kzqbdgi2iOGunoY3H0Zi-Ti1r0sYqqjZxglWQn5pCFobPYyysy7oKrJrxEviwv-eM_L5t6ppjR9Sk-Uzmty-5htJsE"/>
+<div class="p-space-md">
+<div class="flex justify-between items-center mb-1">
+<span class="font-title-editorial text-title-editorial text-cream-text">Turnkey Ready-to-Move Delivery</span>
+<span class="text-champagne-light font-label-uppercase text-[11px] bg-primary/10 px-2 py-0.5 rounded">60-90 DAYS</span>
+</div>
+<p class="font-body-sm text-body-sm text-smoke-subtle">
+              Complete interior styling, premium fittings, high-end bath suites, and intelligent energy systems included from day one.
+            </p>
+</div>
+</div>
+</div>
+<!-- Feature Bullet Pills -->
+<div class="grid grid-cols-2 gap-2 pt-space-xs">
+<div class="p-3 bg-surface-container-high rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-champagne-light text-[18px]">verified</span>
+<span class="font-body-sm text-[12px] text-cream-text">Custom 1-4 BHK</span>
+</div>
+<div class="p-3 bg-surface-container-high rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-champagne-light text-[18px]">speed</span>
+<span class="font-body-sm text-[12px] text-cream-text">Faster Construction</span>
+</div>
+<div class="p-3 bg-surface-container-high rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-champagne-light text-[18px]">eco</span>
+<span class="font-body-sm text-[12px] text-cream-text">Eco-Friendly Wood</span>
+</div>
+<div class="p-3 bg-surface-container-high rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-champagne-light text-[18px]">key</span>
+<span class="font-body-sm text-[12px] text-cream-text">Turnkey Handover</span>
+</div>
+</div>
+</div>
+</section>
+<!-- CURATED STAYS PORTFOLIO -->
+<section class="px-margin py-space-2xl bg-espresso-deep" id="curated-stays">
+<div class="space-y-space-md">
+<div class="text-center space-y-space-xs">
+<span class="font-label-uppercase text-label-uppercase text-champagne-light uppercase tracking-[0.2em]">
+          Explore Our Top Stays
+        </span>
+<h2 class="font-headline-md text-headline-md text-cream-text tracking-tight">
+          A Curated Portfolio Crafted for High Performance &amp; Guest Delight
+        </h2>
+<p class="font-body-md text-body-md text-sand-muted max-w-sm mx-auto leading-relaxed">
+          Carefully selected and architected to deliver exceptional guest reviews and market-leading short-term rental yields.
+        </p>
+</div>
+<!-- Stay Card 1: Devdaar Mansion -->
+<div class="rounded-xl overflow-hidden bg-surface-card shadow-xl transition-all duration-300">
+<div class="relative">
+<img class="w-full h-60 object-cover" data-alt="Opulent master suite inside Devdaar Mansion Mussoorie with warm backlit wooden headboard, exposed cedar rafters, cozy ambient bedside lamps, plush linen, and view of mountain fog through large bay windows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLy3t5QhiwqBvmuWthFK7lKABVy8QUAJk5Uujt8fkrWWesDw5lyCGOdyrvNben9Nf3-oDluLbAimsZlGkw8J6Ik7auckPs6ScFRoGj1xMykhsyx8UGnKZJVgHJqAyJCyv2w5hXfVAblrnG-ZMzHsYKeLjC0M9BEhx2SlClM92bBQ3rI7A68laUCw9Fde_RCUHZhYgDSrq-7BQc3mmLdRrQ_1Kgn7pnFhVwHejRzJ-w"/>
+<div class="absolute top-3 left-3 bg-basalt-obsidian/80 backdrop-blur-md px-3 py-1 rounded text-champagne-light font-label-uppercase text-[11px] tracking-wider uppercase">
+            Mussoorie • 3 BHK Villa
+          </div>
+<div class="absolute top-3 right-3 bg-primary text-basalt-obsidian px-2 py-0.5 rounded font-label-uppercase text-[10px] font-semibold">
+            Superhost
+          </div>
+</div>
+<div class="p-space-md space-y-space-sm">
+<div class="flex justify-between items-baseline">
+<h3 class="font-headline-sm text-headline-sm text-cream-text">Devdaar Mansion</h3>
+<span class="font-label-uppercase text-[12px] text-champagne-light">Scenic Cedar Views</span>
+</div>
+<p class="font-body-sm text-body-sm text-sand-muted leading-relaxed">
+            A spacious 3BHK villa in Mussoorie, surrounded by beautiful cedar trees and calm hillside tranquility. Features expansive windows, sunlit bedrooms, and warm wood craft throughout.
+          </p>
+<div class="pt-space-xs flex items-center justify-between">
+<div class="flex items-center gap-1 text-smoke-subtle text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">groups</span>
+<span>Up to 8 Guests</span>
+</div>
+<a class="h-10 px-4 inline-flex items-center gap-1.5 bg-primary text-basalt-obsidian font-label-button text-label-button rounded tracking-wider uppercase shadow-md active:scale-95 transition-transform" href="https://www.airbnb.co.uk/rooms/1640487849162053713?unique_share_id=43fc0cb8-10f2-4c70-8fb1-f9554715fc89&amp;viralityEntryPoint=1&amp;s=76" rel="noopener noreferrer" target="_blank">
+<span>View On Airbnb</span>
+<span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Stay Card 2: Kalagaon Retreat -->
+<div class="rounded-xl overflow-hidden bg-surface-card shadow-xl transition-all duration-300">
+<div class="relative">
+<img class="w-full h-60 object-cover" data-alt="Modern bohemian living room in Kalagaon Retreat featuring deep olive green sectional sofa, light oak wood coffee table, minimalist modern chandelier, warm accent lights, and floor plants." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4UxITg6WISoZQlst2D-5Ni6NNv2LBz4hjQWmj1WqJ6wMaYkYxHOOCVHXQVCz_C3ZuY1w0i_gmgcrTtJVq98XQEglV3owRT1mh8OIxj57Lf6g_Xvrs2L9A5i7iN65t2-IPsSaRrKiEiJIaXLGc69oiN8rFlYXHVxejjZ8SplcFPq_FK7V67RabqEB5sa2u_clgX_T356Hut2cIuqd3_BeUSRq3qeUNI5AOQ-VQcEZf"/>
+<div class="absolute top-3 left-3 bg-basalt-obsidian/80 backdrop-blur-md px-3 py-1 rounded text-champagne-light font-label-uppercase text-[11px] tracking-wider uppercase">
+            Kalagaon • 3 BHK Retreat
+          </div>
+</div>
+<div class="p-space-md space-y-space-sm">
+<div class="flex justify-between items-baseline">
+<h3 class="font-headline-sm text-headline-sm text-cream-text">Kalagaon Retreat</h3>
+<span class="font-label-uppercase text-[12px] text-champagne-light">Mountain Horizon</span>
+</div>
+<p class="font-body-sm text-body-sm text-sand-muted leading-relaxed">
+            Wake up to panoramic mountain vistas in calm surroundings. Designed for families, slow travelers, and remote working professionals with high-speed WiFi, private balconies, and abundant natural light.
+          </p>
+<div class="pt-space-xs flex items-center justify-between">
+<div class="flex items-center gap-1 text-smoke-subtle text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">wifi</span>
+<span>Remote Work Ready</span>
+</div>
+<a class="h-10 px-4 inline-flex items-center gap-1.5 bg-primary text-basalt-obsidian font-label-button text-label-button rounded tracking-wider uppercase shadow-md active:scale-95 transition-transform" href="https://www.airbnb.co.uk/rooms/1530492020641668638?unique_share_id=010cec70-3bf6-4db7-b012-14e2651920b3&amp;viralityEntryPoint=1&amp;s=76" rel="noopener noreferrer" target="_blank">
+<span>View On Airbnb</span>
+<span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Stay Card 3: Gulmohar -->
+<div class="rounded-xl overflow-hidden bg-surface-card shadow-xl transition-all duration-300">
+<div class="relative">
+<img class="w-full h-60 object-cover" data-alt="Heritage Indian lounge in Gulmohar luxury apartment showing handcrafted sheesham wood cane chairs, rich terracotta earthy wall finishes, vintage chandelier, and artistic Rajasthani tapestry on wall." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9uMRAXmVjoJRDk6cn5y_iDB3dw9M4srORsu180W4-PKarb8KhwK0OZ0GI-gUk5E_VyziOnucregwFC2lmoCbHcEXq9G9iPQfputBikdTFvQc-0wk_btX_lZs-AysNkDX5QNXNYYR36NPGqc_Katdll5FMRyU4KWVy8wwnWq5UUMyNO71XLl7GlRBqtob4CT5RmvL0H9vRC3HLor_jZY4_jRU-R0P-ZkjNSccJxPpC"/>
+<div class="absolute top-3 left-3 bg-basalt-obsidian/80 backdrop-blur-md px-3 py-1 rounded text-champagne-light font-label-uppercase text-[11px] tracking-wider uppercase">
+            Dehradun • 2 BHK Heritage
+          </div>
+</div>
+<div class="p-space-md space-y-space-sm">
+<div class="flex justify-between items-baseline">
+<h3 class="font-headline-sm text-headline-sm text-cream-text">Gulmohar</h3>
+<span class="font-label-uppercase text-[12px] text-champagne-light">Artisan Indian Décor</span>
+</div>
+<p class="font-body-sm text-body-sm text-sand-muted leading-relaxed">
+            Spacious 2BHK decorated with traditional wooden furniture, rich earthy hues, artisanal lighting, and authentic Indian artwork. A warm and soul-nourishing home for relaxed escapes.
+          </p>
+<div class="pt-space-xs flex items-center justify-between">
+<div class="flex items-center gap-1 text-smoke-subtle text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">chair</span>
+<span>Handcrafted Teak</span>
+</div>
+<a class="h-10 px-4 inline-flex items-center gap-1.5 bg-primary text-basalt-obsidian font-label-button text-label-button rounded tracking-wider uppercase shadow-md active:scale-95 transition-transform" href="https://www.airbnb.co.uk/rooms/1393398501096217220?unique_share_id=cf97d7be-fa9d-4047-ad42-58b83e173af9&amp;viralityEntryPoint=1&amp;s=76" rel="noopener noreferrer" target="_blank">
+<span>View On Airbnb</span>
+<span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Stay Card 4: Aura -->
+<div class="rounded-xl overflow-hidden bg-surface-card shadow-xl transition-all duration-300">
+<div class="relative">
+<img class="w-full h-60 object-cover" data-alt="Sleek contemporary dining hall and lounge in Aura villa featuring marble dining table set for eight, ambient tray ceiling cove lighting, large smart TV, and clean cream upholstered chairs." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzXpO61IBcgLT2AOGWhnPFU1Fyd2fjeBR4YtfVA92L_405OFPFKMo7FDhtbGF0XDsBGdTtUaM4Q1f064VKUJqTq9yiXsa5n2lwxYDtRivggxBDuH9AZGmLHWxPhwrESb6xn9ymPaM_OKZDJ5p8xK_K_SfrGGdc7KYpPBvBM1QKMyEwL5sRQm4VoSoVXGToJsn3nOVYJ_G6NMr7SD8ha3GUQ1DUC_xszEJO4DrPFRZ8"/>
+<div class="absolute top-3 left-3 bg-basalt-obsidian/80 backdrop-blur-md px-3 py-1 rounded text-champagne-light font-label-uppercase text-[11px] tracking-wider uppercase">
+            Near ISBT • 3 BHK Villa
+          </div>
+</div>
+<div class="p-space-md space-y-space-sm">
+<div class="flex justify-between items-baseline">
+<h3 class="font-headline-sm text-headline-sm text-cream-text">Aura</h3>
+<span class="font-label-uppercase text-[12px] text-champagne-light">Private Terrace</span>
+</div>
+<p class="font-body-sm text-body-sm text-sand-muted leading-relaxed">
+            Ideal for larger families and extended stays seeking modern comfort near Doon University. Features a private rooftop terrace, secluded residential peacefulness, and instant access to the highway.
+          </p>
+<div class="pt-space-xs flex items-center justify-between">
+<div class="flex items-center gap-1 text-smoke-subtle text-body-sm">
+<span class="material-symbols-outlined text-[16px] text-primary">deck</span>
+<span>Private Terrace</span>
+</div>
+<a class="h-10 px-4 inline-flex items-center gap-1.5 bg-primary text-basalt-obsidian font-label-button text-label-button rounded tracking-wider uppercase shadow-md active:scale-95 transition-transform" href="https://www.airbnb.co.uk/rooms/1401299980174168216?unique_share_id=8e37fc2b-1f7a-4fad-be46-a7aeec36d9ab&amp;viralityEntryPoint=1&amp;s=76" rel="noopener noreferrer" target="_blank">
+<span>View On Airbnb</span>
+<span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- OUR EXPERTISE (FULL INVESTMENT LIFECYCLE) -->
+<section class="px-margin py-space-2xl bg-surface">
+<div class="space-y-space-md">
+<div class="space-y-space-xs">
+<span class="font-label-uppercase text-label-uppercase text-champagne-light uppercase tracking-[0.2em]">
+          Our Expertise
+        </span>
+<h2 class="font-headline-md text-headline-md text-cream-text tracking-tight">
+          End-to-End Solutions to Turn Properties Into High-Performing Assets
+        </h2>
+<p class="font-body-md text-body-md text-sand-muted">
+          Our six pillars guarantee hands-off ownership with institutional-grade returns.
+        </p>
+</div>
+<!-- 6 Expertise Steps Cards -->
+<div class="grid grid-cols-1 gap-3 pt-space-xs">
+<!-- Step 1 -->
+<div class="p-space-md rounded-lg bg-surface-card flex items-start gap-4 shadow-sm">
+<div class="w-12 h-12 rounded bg-surface-container-high flex-shrink-0 flex items-center justify-center text-champagne-light">
+<span class="material-symbols-outlined text-[24px]">query_stats</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-uppercase text-[11px] text-champagne-light tracking-widest">01</span>
+<h3 class="font-title-editorial text-[17px] text-cream-text">Market Research &amp; Feasibility</h3>
+</div>
+<p class="font-body-sm text-body-sm text-smoke-subtle leading-relaxed">
+              Algorithmic short-term rental demand mapping, ADR projections, seasonal occupancy tracking, and micro-location vetting.
+            </p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="p-space-md rounded-lg bg-surface-card flex items-start gap-4 shadow-sm">
+<div class="w-12 h-12 rounded bg-surface-container-high flex-shrink-0 flex items-center justify-center text-champagne-light">
+<span class="material-symbols-outlined text-[24px]">real_estate_agent</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-uppercase text-[11px] text-champagne-light tracking-widest">02</span>
+<h3 class="font-title-editorial text-[17px] text-cream-text">Land &amp; Property Acquisition</h3>
+</div>
+<p class="font-body-sm text-body-sm text-smoke-subtle leading-relaxed">
+              Clear title verification, legal registry oversight, local regulatory clearances, and direct off-market parcel negotiations.
+            </p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="p-space-md rounded-lg bg-surface-card flex items-start gap-4 shadow-sm">
+<div class="w-12 h-12 rounded bg-surface-container-high flex-shrink-0 flex items-center justify-center text-champagne-light">
+<span class="material-symbols-outlined text-[24px]">architecture</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-uppercase text-[11px] text-champagne-light tracking-widest">03</span>
+<h3 class="font-title-editorial text-[17px] text-cream-text">Design &amp; Development</h3>
+</div>
+<p class="font-body-sm text-body-sm text-smoke-subtle leading-relaxed">
+              Architectural blueprints, modular prefab precision builds, structural integrity tests, and sustainable material curation.
+            </p>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="p-space-md rounded-lg bg-surface-card flex items-start gap-4 shadow-sm">
+<div class="w-12 h-12 rounded bg-surface-container-high flex-shrink-0 flex items-center justify-center text-champagne-light">
+<span class="material-symbols-outlined text-[24px]">bed</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-uppercase text-[11px] text-champagne-light tracking-widest">04</span>
+<h3 class="font-title-editorial text-[17px] text-cream-text">Airbnb Setup &amp; Styling</h3>
+</div>
+<p class="font-body-sm text-body-sm text-smoke-subtle leading-relaxed">
+              Boutique hospitality furnishing, professional architectural photography, listing SEO optimization, and Superhost launch algorithms.
+            </p>
+</div>
+</div>
+<!-- Step 5 -->
+<div class="p-space-md rounded-lg bg-surface-card flex items-start gap-4 shadow-sm">
+<div class="w-12 h-12 rounded bg-surface-container-high flex-shrink-0 flex items-center justify-center text-champagne-light">
+<span class="material-symbols-outlined text-[24px]">hotel_class</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-uppercase text-[11px] text-champagne-light tracking-widest">05</span>
+<h3 class="font-title-editorial text-[17px] text-cream-text">Operations &amp; Revenue Management</h3>
+</div>
+<p class="font-body-sm text-body-sm text-smoke-subtle leading-relaxed">
+              24/7 guest concierge, housekeeping standards, dynamic AI price yield adjustments, regular property maintenance, and monthly owner statements.
+            </p>
+</div>
+</div>
+<!-- Step 6 -->
+<div class="p-space-md rounded-lg bg-surface-card flex items-start gap-4 shadow-sm">
+<div class="w-12 h-12 rounded bg-surface-container-high flex-shrink-0 flex items-center justify-center text-champagne-light">
+<span class="material-symbols-outlined text-[24px]">currency_exchange</span>
+</div>
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-uppercase text-[11px] text-champagne-light tracking-widest">06</span>
+<h3 class="font-title-editorial text-[17px] text-cream-text">Exit &amp; Resale Support</h3>
+</div>
+<p class="font-body-sm text-body-sm text-smoke-subtle leading-relaxed">
+              Liquidity facilitation through our private investor syndicate with documented rental yield track records when you choose to liquidate.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FOUNDERS LEADERSHIP -->
+<section class="px-margin py-space-2xl bg-espresso-deep">
+<div class="space-y-space-md">
+<div class="text-center space-y-space-xs">
+<span class="font-label-uppercase text-label-uppercase text-champagne-light uppercase tracking-[0.2em]">
+          Leadership
+        </span>
+<h2 class="font-headline-md text-headline-md text-cream-text tracking-tight">
+          Our Founders
+        </h2>
+<p class="font-body-sm text-body-sm text-sand-muted max-w-xs mx-auto">
+          Combining institutional fintech scale, on-ground property excellence, and customer-first operations.
+        </p>
+</div>
+<div class="space-y-space-md pt-space-xs">
+<!-- Founder 1 -->
+<div class="p-space-md rounded-xl bg-surface-card flex flex-col items-center text-center shadow-lg">
+<div class="w-24 h-24 rounded-full overflow-hidden mb-space-sm shadow-[0_0_16px_rgba(196,164,124,0.25)]">
+<img class="w-full h-full object-cover" data-alt="Editorial portrait of Avanindra Singh, sophisticated Indian entrepreneur in a sharp black turtleneck, smiling warmly in a luxurious timber-paneled executive office." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS9mv336TjNQvrKckYxFvugGVmvul4jizK2ZhqK-VtsG95dT7rojyoiB7AE1wzvKD8G6m_WRhu6tNFHpFqK6y_5LlfIg31rM0o_Mv4Ihw34iBymskbVpPFwld9dTTQw-0N6IKdl9c1oWITUSu1n8TI7d2MlnIR9i06lTLri2YfwImRswY3Labm0958-zJxbQRo7zNkVFd0gy_ESro4FoQJWeGlJwO-SxeN_MgFTemp"/>
+</div>
+<h3 class="font-headline-sm text-[20px] text-cream-text">Avanindra Singh</h3>
+<span class="font-label-uppercase text-[11px] text-champagne-light tracking-widest uppercase mb-space-xs">Founder</span>
+<p class="font-body-sm text-body-sm text-sand-muted leading-relaxed">
+            A graduate from Jamia Millia Islamia, Avanindra is the founder of Kamlam and also leads a fintech venture. He brings a strong vision for building scalable, high-yield real estate assets with a focus on long-term growth and structured expansion.
+          </p>
+</div>
+<!-- Founder 2 -->
+<div class="p-space-md rounded-xl bg-surface-card flex flex-col items-center text-center shadow-lg">
+<div class="w-24 h-24 rounded-full overflow-hidden mb-space-sm shadow-[0_0_16px_rgba(196,164,124,0.25)]">
+<img class="w-full h-full object-cover" data-alt="Portrait of Ved Tomar, handsome Indian co-founder in a bespoke charcoal blazer, well-groomed beard, confident demeanor, shot with warm architectural interior lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmFxjVs_IJU7_5eLjYTI8fcbjNvSTXwEK_C6hG0zJiQT0tSq6J9ysqytza68zsAoXZAce3YZbNPvNauj0N5dR3-xCKVLAqjoTSn_FY7bTkaP6ahvTLrYcEQS748tUwKgPLrEW_H_o4lDJtjGmBhMrIHOLVbdPLNXxxatF_W1Q5hypbXqhYRBvQw0EmzqKbP2o7V_wWj2WDB70gNoj_2StTcGnJrssssxAjLBFfAbBd"/>
+</div>
+<h3 class="font-headline-sm text-[20px] text-cream-text">Ved Tomar</h3>
+<span class="font-label-uppercase text-[11px] text-champagne-light tracking-widest uppercase mb-space-xs">Co-Founder</span>
+<p class="font-body-sm text-body-sm text-sand-muted leading-relaxed">
+            Graduate from Delhi University, Ved plays a key role in business development and operations. He focuses on strategic property acquisition, partnerships, and streamlining processes to ensure consistent performance across the portfolio.
+          </p>
+</div>
+<!-- Founder 3 -->
+<div class="p-space-md rounded-xl bg-surface-card flex flex-col items-center text-center shadow-lg">
+<div class="w-24 h-24 rounded-full overflow-hidden mb-space-sm shadow-[0_0_16px_rgba(196,164,124,0.25)]">
+<img class="w-full h-full object-cover" data-alt="Editorial close-up of Dushyant Singh, charismatic Indian hospitality entrepreneur in a stylish cream textured kurta shirt, friendly smile in a sunlit boutique resort lounge." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw3feG_O3_WzLg6O_910ZmxLITCA8LIIYLRiRbPVzzkdceS4fW6aanc8X9UA_Fu3yueylS63P-eluR0Y2uFHSlrfBMOKMVnULp3aS4BZzipTbOXK6KfXz5qjO5sOGWGVIJd1MaC8PSkZvh9HbbeuEyB4pyv9O28Nd_XhH3LDGTih-ezLbcrKhTSdyaUg6hLc4DWr-V-IZhYe7LwKF60aC26tCPTKWMzOot6xp_mAT9"/>
+</div>
+<h3 class="font-headline-sm text-[20px] text-cream-text">Dushyant Singh</h3>
+<span class="font-label-uppercase text-[11px] text-champagne-light tracking-widest uppercase mb-space-xs">Co-Founder</span>
+<p class="font-body-sm text-body-sm text-sand-muted leading-relaxed">
+            Graduate from Delhi University, Dushyant oversees operations and manages a portfolio of 30+ properties across multiple cities. He focuses on five-star guest experience, on-ground execution, and scaling systems for efficient property management.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- GUEST & INVESTOR TESTIMONIALS -->
+<section class="px-margin py-space-2xl bg-surface">
+<div class="space-y-space-md">
+<div class="text-center space-y-space-xs">
+<span class="font-label-uppercase text-label-uppercase text-champagne-light uppercase tracking-[0.2em]">
+          Guest &amp; Investor Reviews
+        </span>
+<h2 class="font-headline-md text-headline-md text-cream-text tracking-tight">
+          Stories of Peace From Our Community
+        </h2>
+<p class="font-body-sm text-body-sm text-smoke-subtle">
+          Real experiences reflecting our dedication to comfort, yield, and authentic hospitality.
+        </p>
+</div>
+<!-- Testimonial Slider-Cards -->
+<div class="space-y-space-md pt-space-xs">
+<!-- Review 1 -->
+<div class="p-space-md rounded-xl bg-surface-card relative shadow-md">
+<div class="flex items-center gap-1 text-tertiary mb-2">
+<span class="material-symbols-outlined text-[16px]">star</span>
+<span class="material-symbols-outlined text-[16px]">star</span>
+<span class="material-symbols-outlined text-[16px]">star</span>
+<span class="material-symbols-outlined text-[16px]">star</span>
+<span class="material-symbols-outlined text-[16px]">star</span>
+</div>
+<p class="font-body-md text-body-md text-sand-muted italic mb-space-sm leading-relaxed">
+            “I always wanted to invest in real estate but didn’t have the time to manage it. With Kamlam, everything was handled end-to-end. My property is now generating consistent monthly income, and I literally don’t have to worry about anything.”
+          </p>
+<div class="flex items-center gap-2 pt-space-xs">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-champagne-light font-headline-sm text-sm">
+              RM
+            </div>
+<div>
+<p class="font-title-editorial text-[15px] text-cream-text">Rohit Mehta</p>
+<p class="font-label-uppercase text-[10px] text-smoke-subtle">Senior Software Engineer • Bangalore</p>
+</div>
+</div>
+</div>
+<!-- Review 2 -->
+<div class="p-space-md rounded-xl bg-surface-card relative shadow-md">
+<div class="flex items-center gap-1 text-tertiary mb-2">
+<span class="material-symbols-outlined text-[16px]">star</span>
+<span class="material-symbols-outlined text-[16px]">star</span>
+<span class="material-symbols-outlined text-[16px]">star</span>
+<span class="material-symbols-outlined text-[16px]">star</span>
+<span class="material-symbols-outlined text-[16px]">star</span>
+</div>
+<p class="font-body-md text-body-md text-sand-muted italic mb-space-sm leading-relaxed">
+            “What I loved most is the combination of income and lifestyle. I use the property with my family during vacations, and the rest of the time it earns for me. It’s the smartest investment decision I’ve made.”
+          </p>
+<div class="flex items-center gap-2 pt-space-xs">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-champagne-light font-headline-sm text-sm">
+              NS
+            </div>
+<div>
+<p class="font-title-editorial text-[15px] text-cream-text">Neha Sharma</p>
+<p class="font-label-uppercase text-[10px] text-smoke-subtle">Marketing Manager • Delhi</p>
+</div>
+</div>
+</div>
+<!-- Review 3 -->
+<div class="p-space-md rounded-xl bg-surface-card relative shadow-md">
+<div class="flex items-center gap-1 text-tertiary mb-2">
+<span class="material-symbols-outlined text-[16px]">star</span>
+<span class="material-symbols-outlined text-[16px]">star</span>
+<span class="material-symbols-outlined text-[16px]">star</span>
+<span class="material-symbols-outlined text-[16px]">star</span>
+<span class="material-symbols-outlined text-[16px]">star</span>
+</div>
+<p class="font-body-md text-body-md text-sand-muted italic mb-space-sm leading-relaxed">
+            “Investing in India from abroad felt risky until I found Kamlam. Their transparency and full-service approach gave me confidence. From purchase to Airbnb management, everything was seamless—and returns have exceeded expectations.”
+          </p>
+<div class="flex items-center gap-2 pt-space-xs">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-champagne-light font-headline-sm text-sm">
+              AP
+            </div>
+<div>
+<p class="font-title-editorial text-[15px] text-cream-text">Amit Patel</p>
+<p class="font-label-uppercase text-[10px] text-smoke-subtle">NRI Investor • Dubai</p>
+</div>
+</div>
+</div>
+<!-- Review 4 -->
+<div class="p-space-md rounded-xl bg-surface-card relative shadow-md">
+<div class="flex items-center gap-1 text-tertiary mb-2">
+<span class="material-symbols-outlined text-[16px]">star</span>
+<span class="material-symbols-outlined text-[16px]">star</span>
+<span class="material-symbols-outlined text-[16px]">star</span>
+<span class="material-symbols-outlined text-[16px]">star</span>
+<span class="material-symbols-outlined text-[16px]">star</span>
+</div>
+<p class="font-body-md text-body-md text-sand-muted italic mb-space-sm leading-relaxed">
+            “Unlike traditional residential leases, this model truly maximizes the earning potential of the property. The bespoke interiors, listing optimization, and guest experience are all handled with impeccable standards.”
+          </p>
+<div class="flex items-center gap-2 pt-space-xs">
+<div class="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-champagne-light font-headline-sm text-sm">
+              AV
+            </div>
+<div>
+<p class="font-title-editorial text-[15px] text-cream-text">Dr. Anjali Verma</p>
+<p class="font-label-uppercase text-[10px] text-smoke-subtle">Dentist • Lucknow</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- YIELD CALCULATOR BANNER (INTERACTIVE ELEMENT) -->
+<section class="px-margin py-space-xl bg-espresso-deep">
+<div class="p-space-lg rounded-xl bg-surface-card relative overflow-hidden shadow-2xl">
+<div class="space-y-space-xs mb-space-md text-center">
+<span class="font-label-uppercase text-[10px] text-champagne-light uppercase tracking-widest">Interactive Estimate</span>
+<h3 class="font-headline-sm text-headline-sm text-cream-text">Projected Rental Returns</h3>
+<p class="font-body-sm text-body-sm text-smoke-subtle">Select typical property configuration to review passive monthly net income:</p>
+</div>
+<div class="space-y-space-sm">
+<div class="grid grid-cols-3 gap-2">
+<button class="calc-btn py-2 px-2 rounded bg-surface-container-high text-champagne-light font-label-uppercase text-[11px] text-center transition-colors active:scale-95" id="calc-tier-1">2 BHK Studio</button>
+<button class="calc-btn py-2 px-2 rounded bg-primary text-basalt-obsidian font-label-uppercase text-[11px] text-center font-bold transition-colors active:scale-95" id="calc-tier-2">3 BHK Villa</button>
+<button class="calc-btn py-2 px-2 rounded bg-surface-container-high text-champagne-light font-label-uppercase text-[11px] text-center transition-colors active:scale-95" id="calc-tier-3">4 BHK Estate</button>
+</div>
+<div class="p-space-md rounded bg-surface-container-high/90 text-center space-y-1">
+<span class="font-label-uppercase text-[11px] text-smoke-subtle uppercase block">Estimated Net Annual Yield</span>
+<div class="font-headline-md text-[32px] text-champagne-light font-bold" id="yield-amount">14.8% – 18.2%</div>
+<p class="font-body-sm text-[12px] text-sand-muted" id="yield-desc">Avg. &amp;inr1,40,000 to &amp;inr2,10,000 monthly distribution after all management fees.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CALL TO ACTION & CONSULTATION SECTION -->
+<section class="px-margin py-space-2xl bg-surface relative">
+<div class="p-space-lg rounded-xl bg-gradient-to-b from-espresso-deep to-basalt-obsidian text-center space-y-space-md shadow-2xl">
+<div class="w-12 h-12 rounded-full bg-primary/10 mx-auto flex items-center justify-center text-champagne-light">
+<span class="material-symbols-outlined text-[24px]">key</span>
+</div>
+<div class="space-y-space-xs">
+<p class="font-label-uppercase text-label-uppercase text-champagne-light uppercase tracking-[0.2em]">
+          Embrace Your Life
+        </p>
+<h2 class="font-headline-md text-headline-md text-cream-text tracking-tight">
+          Own a Holiday Home That Earns for You
+        </h2>
+<p class="font-body-md text-body-md text-sand-muted max-w-xs mx-auto leading-relaxed">
+          Let’s build your investment together. Connect with our principals to explore off-market hillside parcels and pre-approved villa plots.
+        </p>
+</div>
+<div class="space-y-3 pt-space-xs">
+<a class="w-full h-12 flex items-center justify-center gap-2 bg-primary text-basalt-obsidian font-label-button text-label-button rounded tracking-wider uppercase shadow-[0_4px_20px_rgba(196,164,124,0.3)] active:scale-95 transition-all" href="https://wa.me/919260926751?text=Hello%2C%20I'm%20Interested%20!" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]">calendar_month</span>
+          Book Appointment via WhatsApp
+        </a>
+<a class="w-full h-12 flex items-center justify-center gap-2 bg-surface-container-high text-cream-text font-label-button text-label-button rounded tracking-wider uppercase transition-colors" href="tel:+919260926751">
+<span class="material-symbols-outlined text-[18px]">call</span>
+          Direct Call: +91 9260926751
+        </a>
+</div>
+</div>
+</section>
+<!-- EDITORIAL FOOTER & ADDRESSES -->
+<footer class="px-margin pt-space-xl pb-space-2xl bg-basalt-obsidian text-smoke-subtle space-y-space-xl">
+<!-- Logo & Brand Statement -->
+<div class="text-center space-y-space-xs">
+<div class="flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-champagne-light text-[22px]">villa</span>
+<span class="font-title-editorial text-[22px] text-cream-text tracking-wider">KAMLAM ESTATE</span>
+</div>
+<p class="font-body-sm text-[12px] text-smoke-subtle max-w-xs mx-auto">
+        Premier turn-key holiday homes, high-yield vacation rentals, and modular Himalayan architecture.
+      </p>
+</div>
+<!-- Offices & Registered Addresses -->
+<div class="space-y-space-md">
+<h3 class="font-label-uppercase text-label-uppercase text-champagne-light uppercase tracking-widest text-center">
+        Regional Offices
+      </h3>
+<div class="grid grid-cols-1 gap-space-sm">
+<div class="p-space-md rounded bg-espresso-deep text-center space-y-1">
+<span class="font-title-editorial text-[15px] text-cream-text block">Varanasi Headquarters</span>
+<p class="font-body-sm text-body-sm text-sand-muted">
+            AF-1/1 Imlak-II, Nadesar, Varanasi – 221002, Uttar Pradesh
+          </p>
+</div>
+<div class="p-space-md rounded bg-espresso-deep text-center space-y-1">
+<span class="font-title-editorial text-[15px] text-cream-text block">Lucknow Executive Suite</span>
+<p class="font-body-sm text-body-sm text-sand-muted">
+            402, Parsvnath Planet, Vibhuti Khand, Gomti Nagar, Lucknow – 226010, Uttar Pradesh
+          </p>
+</div>
+</div>
+</div>
+<!-- Contact & Communications Channels -->
+<div class="space-y-space-sm text-center">
+<h3 class="font-label-uppercase text-label-uppercase text-champagne-light uppercase tracking-widest">
+        Direct Enquiries
+      </h3>
+<div class="space-y-1 font-body-sm text-cream-text">
+<p>
+<a class="hover:text-primary transition-colors" href="mailto:kamlamhomes18@gmail.com">kamlamhomes18@gmail.com</a>
+</p>
+<p class="text-sand-muted">
+          +91 9116222666 • +91 9582250680 • +91 9260926751
+        </p>
+</div>
+<!-- Social Links -->
+<div class="flex items-center justify-center gap-space-md pt-space-xs">
+<a aria-label="Instagram" class="w-10 h-10 rounded-full bg-espresso-deep flex items-center justify-center text-champagne-light hover:text-primary transition-colors" href="https://www.instagram.com/kamlam_homes?igsh=MTN2b2hzZHZsN2EyNg%3D%3D&amp;utm_source=qr" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]">photo_camera</span>
+</a>
+<a aria-label="Facebook" class="w-10 h-10 rounded-full bg-espresso-deep flex items-center justify-center text-champagne-light hover:text-primary transition-colors" href="https://www.facebook.com/share/1CtzVQ5PDF/?mibextid=wwXIfr" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]">public</span>
+</a>
+<a aria-label="WhatsApp" class="w-10 h-10 rounded-full bg-espresso-deep flex items-center justify-center text-champagne-light hover:text-primary transition-colors" href="https://wa.me/919260926751?text=Hello%2C%20I'm%20Interested%20!" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</a>
+</div>
+</div>
+<!-- Newsletter Opt-in -->
+<div class="p-space-md rounded-xl bg-espresso-deep text-center space-y-space-sm">
+<span class="font-label-uppercase text-[11px] text-champagne-light uppercase tracking-wider block">
+        Private Investor Memo
+      </span>
+<p class="font-body-sm text-[12px] text-smoke-subtle">
+        Receive quarterly rental market feasibility studies across Mussoorie &amp; Uttarakhand.
+      </p>
+<form class="space-y-2" onsubmit="event.preventDefault(); document.getElementById('nl-success').classList.remove('hidden');">
+<input class="w-full h-11 px-3 bg-surface text-cream-text placeholder:text-smoke-subtle text-body-sm rounded outline-none focus:ring-1 focus:ring-primary" placeholder="Enter your email address" required="" type="email"/>
+<button class="w-full h-11 bg-primary text-basalt-obsidian font-label-button text-label-button rounded tracking-wider uppercase shadow-md active:scale-95" type="submit">
+          Subscribe To Newsletter
+        </button>
+</form>
+<div class="hidden text-champagne-light font-body-sm text-[12px] pt-1" id="nl-success">
+        Thank you. You have been added to our private investor dispatch.
+      </div>
+</div>
+<!-- Copyright -->
+<div class="text-center font-label-uppercase text-[10px] text-smoke-subtle pt-space-md tracking-widest uppercase">
+      © 2025 Kamlam Estate. All Rights Reserved.
+    </div>
+</footer>
+<!-- LIGHTWEIGHT CLIENT-SIDE INTERACTIVITY SCRIPT -->
+<script>
+    (function() {
+      // Calculator Micro-Interaction
+      const btn1 = document.getElementById('calc-tier-1');
+      const btn2 = document.getElementById('calc-tier-2');
+      const btn3 = document.getElementById('calc-tier-3');
+      const yieldAmt = document.getElementById('yield-amount');
+      const yieldDesc = document.getElementById('yield-desc');
+
+      function setActive(btnActive, amt, desc) {
+        [btn1, btn2, btn3].forEach(b => {
+          if (b) {
+            b.className = 'calc-btn py-2 px-2 rounded bg-surface-container-high text-champagne-light font-label-uppercase text-[11px] text-center transition-colors active:scale-95';
+          }
+        });
+        if (btnActive) {
+          btnActive.className = 'calc-btn py-2 px-2 rounded bg-primary text-basalt-obsidian font-label-uppercase text-[11px] text-center font-bold transition-colors active:scale-95';
+        }
+        if (yieldAmt) yieldAmt.textContent = amt;
+        if (yieldDesc) yieldDesc.textContent = desc;
+      }
+
+      if (btn1) {
+        btn1.addEventListener('click', () => {
+          setActive(btn1, '12.4% – 15.0%', 'Avg. ₹85,000 to ₹1,25,000 monthly distribution after management.');
+        });
+      }
+
+      if (btn2) {
+        btn2.addEventListener('click', () => {
+          setActive(btn2, '14.8% – 18.2%', 'Avg. ₹1,40,000 to ₹2,10,000 monthly distribution after management.');
+        });
+      }
+
+      if (btn3) {
+        btn3.addEventListener('click', () => {
+          setActive(btn3, '17.5% – 21.6%', 'Avg. ₹2,60,000 to ₹3,80,000 monthly distribution after management.');
+        });
+      }
+    })();
+  </script>
+</div></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-espresso-deep/90 backdrop-blur-xl shadow-[0_-4px_24px_rgba(0,0,0,0.4)]" data-active-classes="text-primary"><div class="h-16 px-space-md flex items-center justify-around"><a aria-current="page" class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] transition-colors text-primary" data-path="portfolio" href="#"><span class="material-symbols-outlined text-[22px]">villa</span><span class="font-label-uppercase text-label-uppercase tracking-wider uppercase mt-1">Estates</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] text-smoke-subtle transition-colors hover:text-cream-text" data-path="investment-calculator" href="#"><span class="material-symbols-outlined text-[22px]">monitoring</span><span class="font-label-uppercase text-label-uppercase tracking-wider uppercase mt-1">Yield</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] text-smoke-subtle transition-colors hover:text-cream-text" data-path="curated-stays" href="#"><span class="material-symbols-outlined text-[22px]">hotel</span><span class="font-label-uppercase text-label-uppercase tracking-wider uppercase mt-1">Stays</span></a><a class="flex flex-col items-center justify-center min-w-[56px] min-h-[44px] text-smoke-subtle transition-colors hover:text-cream-text" data-path="investor-concierge" href="#"><span class="material-symbols-outlined text-[22px]">diamond</span><span class="font-label-uppercase text-label-uppercase tracking-wider uppercase mt-1">Private</span></a></div></nav></body></html>

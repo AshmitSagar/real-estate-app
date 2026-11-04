@@ -1,0 +1,11 @@
+# Handle line endings automatically for files detected as text
+# and force them to be normalized to LF on check-in and checkout.
+* text=auto eol=lf
+
+# Explicitly declare files that are always binary so Git doesn't modify them
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
