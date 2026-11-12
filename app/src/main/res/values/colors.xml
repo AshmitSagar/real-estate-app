@@ -1,20 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <!-- Heritage Gold & Obsidian Color Palette -->
+
+    <!-- Primary Gold Colors -->
+    <color name="champagne_gold">#E3C197</color>
+    <color name="muted_champagne">#C4A47C</color>
+    <color name="burnished_gold">#E9C349</color>
+    <color name="smoked_umber">#CFC5BE</color>
+
+    <!-- Dark Surface Colors -->
+    <color name="espresso_deep">#141311</color>
+    <color name="surface_card">#2A2520</color>
+    <color name="surface_container">#211F1D</color>
+    <color name="basalt_obsidian">#0B0C0A</color>
+    <color name="input_background">#12100E</color>
+
+    <!-- Border Colors -->
+    <color name="border_gold_subtle">#5A4A35</color>
+    <color name="border_gold_highlight">#8B7355</color>
+
+    <!-- Text Colors -->
+    <color name="cream_text">#F5F0EB</color>
+    <color name="sand_muted">#F0E8E0</color>
+    <color name="smoke_subtle">#E0D5C8</color>
+
+    <!-- Legacy Color Aliases (for compatibility) -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="white_grey">#F7F7F7</color>
-    <color name="red">#E65541</color>
-    <color name="dark_grey">#EBEBEB</color>
-    <color name="light_grey">#F7F7F7</color>
-    <color name = "light_grey_2">#33000000</color>
-    <color name="medium_grey">#66000000</color>
-    <color name="bottom_nav_background_color">@color/white</color>
-    <color name="bottom_nav_inactive_color">@color/light_grey</color>
-    <color name="primary_color">@color/black</color>
-    <color name="ic_launcher_background">#FF1535</color>
+    <color name="primary_color">@color/champagne_gold</color>
+    <color name="bottom_nav_background_color">@color/espresso_deep</color>
+    <color name="bottom_nav_inactive_color">@color/smoke_subtle</color>
+    <color name="ic_launcher_background">@color/espresso_deep</color>
 </resources>

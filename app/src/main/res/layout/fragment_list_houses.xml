@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_grey"
+    android:background="@color/espresso_deep"
     tools:context=".ui.screens.home.ListHouseFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -13,6 +13,7 @@
         android:layout_height="0dp"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,8 +26,9 @@
         android:layout_width="365dp"
         android:layout_height="37dp"
         android:layout_marginTop="16dp"
-        app:cardBackgroundColor="@color/dark_grey"
-        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@color/surface_container"
+        app:cardCornerRadius="@dimen/radius_large"
+        app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +49,6 @@
             app:queryBackground="@android:color/transparent"
             app:queryHint="Search for a home" />
     </androidx.cardview.widget.CardView>
-    <!--            android:searchHintIcon="@android:color/transparent"-->
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/coordinatorLayout"
@@ -72,6 +73,7 @@
                 android:layout_height="0dp"
                 android:contentDescription="@string/no_result_found"
                 android:src="@mipmap/ic_launcher_foreground"
+                app:tint="@color/smoke_subtle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -83,10 +85,9 @@
                 android:id="@+id/textViewResultsNoFoundPerhaps"
                 android:layout_width="wrap_content"
                 android:layout_height="36dp"
-                android:fontFamily="@font/gothamssm_medium"
                 android:text="@string/perhaps_try_another_search"
-                android:textColor="@color/medium_grey"
-                android:textSize="14sp"
+                android:textAppearance="@style/TextAppearance.App.Body.Medium"
+                android:textColor="@color/smoke_subtle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -97,10 +98,9 @@
                 android:id="@+id/text_view_no_results_found"
                 android:layout_width="147dp"
                 android:layout_height="32dp"
-                android:fontFamily="@font/gothamssm_medium"
                 android:text="@string/no_results_found"
-                android:textColor="@color/medium_grey"
-                android:textSize="14sp"
+                android:textAppearance="@style/TextAppearance.App.Body.Medium"
+                android:textColor="@color/smoke_subtle"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

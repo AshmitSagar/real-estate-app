@@ -1,40 +1,60 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Heritage Gold & Obsidian Dark Luxury Theme -->
     <style name="Theme.DTTAssesmentAndroid" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/white_grey</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <!-- Primary brand color -->
+        <item name="colorPrimary">@color/champagne_gold</item>
+        <item name="colorPrimaryVariant">@color/muted_champagne</item>
+        <item name="colorOnPrimary">@color/espresso_deep</item>
+
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">@color/muted_champagne</item>
+        <item name="colorSecondaryVariant">@color/smoked_umber</item>
+        <item name="colorOnSecondary">@color/cream_text</item>
+
+        <!-- Surface and background -->
+        <item name="colorSurface">@color/surface_card</item>
+        <item name="colorOnSurface">@color/cream_text</item>
+        <item name="android:colorBackground">@color/espresso_deep</item>
+
+        <!-- Text colors -->
+        <item name="android:textColorPrimary">@color/cream_text</item>
+        <item name="android:textColorSecondary">@color/sand_muted</item>
+        <item name="android:textColorTertiary">@color/smoke_subtle</item>
+
+        <!-- Status bar and navigation bar -->
+        <item name="android:statusBarColor">@color/espresso_deep</item>
+        <item name="android:navigationBarColor">@color/espresso_deep</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
+
+        <!-- Force dark mode -->
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
     </style>
 
+    <!-- Search View Style -->
     <style name="AppSearchView" parent="Widget.AppCompat.SearchView">
-        <item name="android:editTextColor">@color/black</item>
-        <item name="android:textColor">@color/dark_grey</item>
-        <item name="android:textColorHint">@android:color/tertiary_text_light</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:fontFamily">@font/gothamssm_light</item>
+        <item name="android:editTextColor">@color/sand_muted</item>
+        <item name="android:textColor">@color/sand_muted</item>
+        <item name="android:textColorHint">@color/smoke_subtle</item>
+        <item name="android:textSize">@dimen/text_body_medium</item>
+        <item name="android:fontFamily">@font/inter</item>
     </style>
 
+    <!-- Splash Screen Theme -->
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/red</item>
+        <item name="windowSplashScreenBackground">@color/espresso_deep</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
         <item name="postSplashScreenTheme">@style/Theme.DTTAssesmentAndroid</item>
     </style>
 
-    <style name="Theme.DTTAssesmentAndroid.AppBarOverlay" parent="ThemeOverlay.AppCompat.DayNight.ActionBar" />
+    <style name="Theme.DTTAssesmentAndroid.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.DTTAssesmentAndroid.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.DTTAssesmentAndroid.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark" />
 
+    <!-- Rounded Corner Image View Style -->
     <style name="roundedCornersImageView" parent="">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">8sp</item>
+        <item name="cornerSize">@dimen/radius_large</item>
     </style>
 
 </resources>

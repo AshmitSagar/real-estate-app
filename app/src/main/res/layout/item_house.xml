@@ -7,9 +7,11 @@
     android:layout_height="100dp"
     android:layout_marginHorizontal="25sp"
     android:layout_marginVertical="10dp"
-    app:cardCornerRadius="8sp"
-    app:cardElevation="4dp"
-    app:cardPreventCornerOverlap="false">
+    app:cardBackgroundColor="@color/surface_card"
+    app:strokeColor="@color/border_gold_subtle"
+    app:strokeWidth="1dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,17 +19,17 @@
 
         <TextView
             android:id="@+id/km_number_textView"
-            android:layout_width="45dp"
-            android:layout_height="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.App.Body.Small"
+            android:textColor="@color/smoke_subtle"
             android:textIsSelectable="false"
-            android:textSize="8sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.953"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.833"
-            app:tint="@color/medium_grey" />
+            app:layout_constraintVertical_bias="0.833" />
 
         <ImageView
             android:id="@+id/km_number_icon"
@@ -40,17 +42,15 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.833"
             app:srcCompat="@drawable/ic_location"
-            app:tint="@color/medium_grey"
+            app:tint="@color/champagne_gold"
             tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/housePrice"
             android:layout_width="193dp"
             android:layout_height="18dp"
-            android:fontFamily="@font/gothamssm_bold"
-            android:textColor="@color/black"
+            android:textAppearance="@style/TextAppearance.App.Price"
             android:textIsSelectable="false"
-            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.146"
@@ -62,16 +62,15 @@
             android:id="@+id/houseZipCode"
             android:layout_width="233dp"
             android:layout_height="16dp"
-            android:fontFamily="@font/gothamssm_medium"
+            android:textAppearance="@style/TextAppearance.App.Body.Small"
+            android:textColor="@color/sand_muted"
             android:textIsSelectable="false"
-            android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.302"
             app:layout_constraintStart_toEndOf="@+id/houseImageView"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.404" />
-
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/houseImageView"
@@ -91,8 +90,6 @@
             android:id="@+id/bedroom_number_icon"
             android:layout_width="12dp"
             android:layout_height="12dp"
-            android:fontFamily="@font/gothamssm_book"
-            android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.295"
@@ -100,23 +97,22 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.833"
             app:srcCompat="@drawable/ic_bed"
-            app:tint="@color/medium_grey"
+            app:tint="@color/champagne_gold"
             tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/house_bedroom_number"
             android:layout_width="12dp"
             android:layout_height="12dp"
-            android:fontFamily="@font/gothamssm_book"
+            android:textAppearance="@style/TextAppearance.App.Body.Small"
+            android:textColor="@color/smoke_subtle"
             android:textIsSelectable="false"
-            android:textSize="8sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.34"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.833"
-            app:tint="@color/medium_grey" />
+            app:layout_constraintVertical_bias="0.833" />
 
         <ImageView
             android:id="@+id/bathroom_number_icon"
@@ -129,38 +125,36 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.833"
             app:srcCompat="@drawable/ic_bath"
-            app:tint="@color/medium_grey"
+            app:tint="@color/champagne_gold"
             tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/house_bathroom_number"
             android:layout_width="12dp"
             android:layout_height="12dp"
-            android:fontFamily="@font/gothamssm_book"
+            android:textAppearance="@style/TextAppearance.App.Body.Small"
+            android:textColor="@color/smoke_subtle"
             android:textIsSelectable="false"
-            android:textSize="8sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.523"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.833"
-            app:tint="@color/medium_grey" />
+            app:layout_constraintVertical_bias="0.833" />
 
         <TextView
             android:id="@+id/house_meters_number"
             android:layout_width="20dp"
             android:layout_height="12dp"
-            android:fontFamily="@font/gothamssm_book"
+            android:textAppearance="@style/TextAppearance.App.Body.Small"
+            android:textColor="@color/smoke_subtle"
             android:textIsSelectable="false"
-            android:textSize="8sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.698"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.829"
-            app:tint="@color/medium_grey" />
+            app:layout_constraintVertical_bias="0.829" />
 
         <ImageView
             android:id="@+id/square_meters_number_icon"
@@ -173,7 +167,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.826"
             app:srcCompat="@drawable/ic_layers"
-            app:tint="@color/medium_grey"
+            app:tint="@color/champagne_gold"
             tools:ignore="ContentDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
