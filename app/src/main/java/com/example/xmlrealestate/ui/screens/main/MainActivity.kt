@@ -1,12 +1,8 @@
 package com.example.xmlrealestate.ui.screens.main
 
-import android.Manifest
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -24,38 +20,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
-        configSplashScreen()
         configBinding()
         configBottomNav()
-        requestLocationPermission()
-    }
-
-    //This method is used to show the splash screen for 1 second.
-    private fun configSplashScreen() {
-        val splashScreen = installSplashScreen()
-        Thread.sleep(1000)
-        splashScreen.setKeepOnScreenCondition {
-            false
-        }
     }
 
     private fun configBinding() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         navView = binding.container.findViewById(R.id.nav_view)
-    }
-
-    //This method is used to request the location permission.
-    private fun requestLocationPermission() {
-        if (ContextCompat.checkSelfPermission(
-                this, Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            ActivityCompat.requestPermissions(
-                this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1
-            )
-        }
     }
 
     private fun configBottomNav() {
@@ -67,28 +41,26 @@ class MainActivity : AppCompatActivity() {
     private fun configBottomNavMenuActions() {
         navController = findNavController(R.id.nav_host_fragment_activity_main)
         navView.setupWithNavController(navController)
+        binding.toolbar.inflateMenu(R.menu.catalog_toolbar_menu)
+        binding.toolbar.setOnMenuItemClickListener {
+            if (it.itemId != R.id.navigation_info) return@setOnMenuItemClickListener false
+            navController.navigate(R.id.navigation_info)
+            true
+        }
+        binding.toolbar.setNavigationOnClickListener { navController.navigateUp() }
     }
 
     //This method is used to handle the visibility of the bottom navigation menu and the toolbar.
     private fun configVisibility() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.navigation_home -> {
-                    navView.visibility = BottomNavigationView.VISIBLE
-                    binding.toolbar.visibility = View.VISIBLE
-                }
-                R.id.detailedHouseFragment -> {
-                    navView.visibility = BottomNavigationView.GONE
-                    binding.toolbar.visibility = View.GONE
-                }
-                R.id.navigation_info -> {
-                    navView.visibility = BottomNavigationView.VISIBLE
-                    binding.toolbar.visibility = View.VISIBLE
-                }
-                else -> {
-                    navView.visibility = BottomNavigationView.GONE
-                }
-            }
+            val isCatalog = destination.id == R.id.navigation_home || destination.id == R.id.navigation_saved
+            val isAbout = destination.id == R.id.navigation_info
+            navView.visibility = if (isCatalog) View.VISIBLE else View.GONE
+            binding.toolbar.visibility = if (isCatalog || isAbout) View.VISIBLE else View.GONE
+            binding.toolbar.menu.findItem(R.id.navigation_info).isVisible = isCatalog
+            if (isAbout) binding.toolbar.setNavigationIcon(R.drawable.ic_back)
+            else binding.toolbar.navigationIcon = null
+            binding.toolbar.setNavigationContentDescription(R.string.navigate_back)
         }
     }
 

@@ -8,6 +8,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/catalogTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/catalog_gutter"
@@ -19,6 +20,7 @@
         tools:targetApi="p" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/searchField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/catalog_gutter"
@@ -51,17 +53,95 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/resultCount"
+    <HorizontalScrollView
+        android:id="@+id/cityChoices"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/catalog_gutter"
+        android:paddingEnd="@dimen/catalog_gutter"
+        android:scrollbars="none">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cityFilters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:chipSpacingHorizontal="8dp"
+            app:selectionRequired="true"
+            app:singleLine="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filterAll"
+                style="@style/Widget.App.CatalogChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/all_ncr" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filterNoida"
+                style="@style/Widget.App.CatalogChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/city_noida" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filterDelhi"
+                style="@style/Widget.App.CatalogChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/city_delhi" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/filterGurugram"
+                style="@style/Widget.App.CatalogChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/city_gurugram" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:id="@+id/catalogControls"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/catalog_gutter"
         android:layout_marginEnd="@dimen/catalog_gutter"
-        android:layout_marginTop="14dp"
-        android:layout_marginBottom="8dp"
-        android:accessibilityLiveRegion="polite"
-        android:textAppearance="@style/TextAppearance.App.Body.Small"
-        tools:text="24 properties" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/resultCount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:accessibilityLiveRegion="polite"
+            android:textAppearance="@style/TextAppearance.App.Body.Small"
+            tools:text="10 properties" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/openFilters"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:text="@string/filter_properties"
+            android:textAllCaps="false"
+            android:textColor="@color/champagne_gold" />
+
+    </LinearLayout>
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/activeFilters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/catalog_gutter"
+        android:paddingEnd="@dimen/catalog_gutter"
+        android:visibility="gone"
+        app:chipSpacingHorizontal="8dp" />
 
     <FrameLayout
         android:layout_width="match_parent"

@@ -5,18 +5,25 @@
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/navigation_home">
 
+    <action
+        android:id="@+id/actionOpenProperty"
+        app:destination="@id/detailedHouseFragment" />
+
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.xmlrealestate.ui.screens.home.ListHouseFragment"
         android:label="@string/title_home"
+        tools:layout="@layout/fragment_list_houses" />
+
+    <fragment
+        android:id="@+id/navigation_saved"
+        android:name="com.example.xmlrealestate.ui.screens.home.ListHouseFragment"
+        android:label="@string/saved_tab"
         tools:layout="@layout/fragment_list_houses">
-        <action
-            android:id="@+id/actionHomeFragmentToDetailedHouseFragment"
-            app:destination="@+id/detailedHouseFragment">
-            <argument
-                android:name="houseId"
-                app:argType="string" />
-        </action>
+        <argument
+            android:name="savedOnly"
+            android:defaultValue="true"
+            app:argType="boolean" />
     </fragment>
 
     <fragment
@@ -27,6 +34,10 @@
         <argument
             android:name="houseId"
             app:argType="string" />
+        <argument
+            android:name="animatePhoto"
+            android:defaultValue="false"
+            app:argType="boolean" />
     </fragment>
 
     <fragment

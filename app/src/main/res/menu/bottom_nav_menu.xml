@@ -7,8 +7,8 @@
         android:title="@string/explore_tab" />
 
     <item
-        android:id="@id/navigation_info"
-        android:icon="@drawable/ic_info"
-        android:title="@string/title_about" />
+        android:id="@id/navigation_saved"
+        android:icon="@drawable/ic_bookmark_outline"
+        android:title="@string/saved_tab" />
 
 </menu>

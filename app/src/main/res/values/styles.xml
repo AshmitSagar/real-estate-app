@@ -55,6 +55,25 @@
 
     <!-- Component Styles -->
 
+    <style name="Widget.App.CatalogChip" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="chipBackgroundColor">@color/catalog_chip_background</item>
+        <item name="android:textColor">@color/catalog_chip_text</item>
+        <item name="chipStrokeColor">@color/border_gold_highlight</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="checkedIconVisible">false</item>
+        <item name="chipIconVisible">false</item>
+        <item name="ensureMinTouchTargetSize">true</item>
+    </style>
+
+    <style name="Widget.App.BookmarkButton" parent="">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:background">@drawable/catalog_back_background</item>
+        <item name="android:contentDescription">@string/save_property</item>
+        <item name="android:scaleType">center</item>
+        <item name="srcCompat">@drawable/catalog_bookmark</item>
+    </style>
+
     <style name="Widget.App.PropertyMetric" parent="">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>

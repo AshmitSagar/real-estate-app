@@ -8,6 +8,7 @@ import android.location.LocationManager
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import androidx.core.location.LocationManagerCompat.isLocationEnabled
+import androidx.core.content.ContextCompat
 import com.example.xmlrealestate.common.Constants
 import com.example.xmlrealestate.domain.model.House
 
@@ -49,13 +50,19 @@ object Utils {
         val providers = locationManager.getProviders(true)
         var mostAccurateLocation: Location? = null
 
-        if (isLocationEnabled(locationManager)) {
+        val permissions = listOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
+        val hasLocationPermission = permissions.any {
+            ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
+        }
+        if (hasLocationPermission && isLocationEnabled(locationManager)) {
             for (provider in providers) {
-                if (context.checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                    val l = locationManager.getLastKnownLocation(provider) ?: continue
-                    if (mostAccurateLocation == null || l.accuracy < mostAccurateLocation.accuracy) {
-                        mostAccurateLocation = l
-                    }
+                val location = try {
+                    locationManager.getLastKnownLocation(provider)
+                } catch (_: SecurityException) {
+                    null
+                } ?: continue
+                if (mostAccurateLocation == null || location.accuracy < mostAccurateLocation.accuracy) {
+                    mostAccurateLocation = location
                 }
             }
         }
