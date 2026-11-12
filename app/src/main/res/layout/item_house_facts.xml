@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.App.Price"
-        tools:text="$285,000" />
+        tools:text="₹82,50,000" />
 
     <TextView
         android:id="@+id/housePlace"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:textAppearance="@style/TextAppearance.App.Body.Medium"
-        tools:text="Amsterdam · 1034 ZH" />
+        tools:text="Sector 62, Noida · 201309" />
 
     <TextView
         android:id="@+id/houseSpecs"

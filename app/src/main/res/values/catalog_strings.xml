@@ -2,13 +2,13 @@
 <resources>
     <string name="explore_tab">Explore</string>
     <string name="explore_properties">Explore properties</string>
-    <string name="property_search_hint">City or postal code</string>
+    <string name="property_search_hint">City, locality or PIN code</string>
     <string name="loading_properties">Loading properties</string>
     <string name="loading_property">Loading property…</string>
     <string name="properties_unavailable">Properties couldn’t be loaded.</string>
     <string name="property_unavailable">This property couldn’t be loaded.</string>
     <string name="no_properties">There are no properties available right now.</string>
-    <string name="property_no_matches">No matches. Try another city or postal code.</string>
+    <string name="property_no_matches">No matches. Try another city, locality or PIN code.</string>
     <string name="retry_properties">Try again</string>
     <string name="clear_property_search">Clear search</string>
     <string name="back_to_properties">Back to properties</string>
@@ -24,7 +24,7 @@
     <string name="property_area_label">Total area</string>
     <string name="property_area_value">%d m²</string>
     <string name="about_kamlam">About Kamlam Estates</string>
-    <string name="catalog_about_description">Browse properties by city or postal code, compare their details, and find them on the map.</string>
+    <string name="catalog_about_description">Explore sample properties in Delhi NCR. Prices, descriptions and photos are illustrative. Map pins show approximate neighbourhood locations.</string>
     <string name="developer_profile">Developer profile</string>
     <string name="profile_open_failed">No app can open the developer profile.</string>
 

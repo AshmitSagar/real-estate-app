@@ -80,7 +80,7 @@ class DetailedHouseFragment : Fragment(R.layout.fragment_detailed_house) {
         val distance = house.distance?.takeUnless { it.isBlank() || it == Constants.NO_DISTANCE_AVAILABLE }
         houseDistanceDetailed.isVisible = distance != null
         if (distance != null) houseDistanceDetailed.text = getString(R.string.property_distance, distance)
-        val location = LatLng(house.latitude.toDouble(), house.longitude.toDouble())
+        val location = LatLng(house.latitude, house.longitude)
         openMap.setOnClickListener { openMaps(location) }
         mapViewHouseLocation.getMapAsync { map ->
             if (binding !== views) return@getMapAsync

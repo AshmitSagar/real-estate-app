@@ -66,7 +66,8 @@ class ListHouseFragment : Fragment(R.layout.fragment_list_houses) {
         val postalQuery = query.filterNot(Char::isWhitespace)
         val houses = state.houses.orEmpty()
         val matches = if (query.isEmpty()) houses else houses.filter { house ->
-            house.city.contains(query, ignoreCase = true) ||
+            "${house.locality} ${house.city}".contains(query, ignoreCase = true) ||
+                (house.city == "Gurugram" && "Gurgaon".contains(query, ignoreCase = true)) ||
                 house.zipCode.filterNot(Char::isWhitespace).contains(postalQuery, ignoreCase = true)
         }
         adapter.submitList(matches) {

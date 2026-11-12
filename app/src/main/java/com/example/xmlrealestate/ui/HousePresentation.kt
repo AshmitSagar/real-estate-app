@@ -1,22 +1,26 @@
 package com.example.xmlrealestate.ui
 
 import android.content.Context
+import android.icu.text.NumberFormat
+import android.icu.util.Currency
 import com.example.xmlrealestate.R
 import com.example.xmlrealestate.domain.model.House
-import java.text.NumberFormat
-import java.util.Currency
+import java.util.Locale
 
 internal fun House.displayPrice(): String =
-    NumberFormat.getCurrencyInstance().apply {
-        currency = Currency.getInstance("USD")
+    NumberFormat.getCurrencyInstance(Locale.forLanguageTag("en-IN")).apply {
+        currency = Currency.getInstance("INR")
         maximumFractionDigits = 0
         minimumFractionDigits = 0
     }.format(price)
 
-internal fun House.displayPlace(context: Context): String = when {
-    city.isBlank() -> zipCode
-    zipCode.isBlank() -> city
-    else -> context.getString(R.string.property_place, city, zipCode)
+internal fun House.displayPlace(context: Context): String {
+    val place = listOf(locality, city).filter(String::isNotBlank).joinToString(", ")
+    return when {
+        place.isBlank() -> zipCode
+        zipCode.isBlank() -> place
+        else -> context.getString(R.string.property_place, place, zipCode)
+    }
 }
 
 internal fun House.displaySpecs(context: Context): String {

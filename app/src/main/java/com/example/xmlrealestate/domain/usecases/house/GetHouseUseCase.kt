@@ -6,5 +6,5 @@ import javax.inject.Inject
 class GetHouseUseCase @Inject constructor(
     private val houseRepository: HouseRepository
 ) {
-    operator fun invoke(houseID: Int) = houseRepository.getHouseCached(houseID)
+    operator fun invoke(houseID: Int) = houseRepository.getHouse(houseID)
 }

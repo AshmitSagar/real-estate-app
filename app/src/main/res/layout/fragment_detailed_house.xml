@@ -74,7 +74,7 @@
                 android:textAppearance="@style/TextAppearance.App.Hero"
                 android:textColor="@color/champagne_gold"
                 tools:targetApi="p"
-                tools:text="$285,000" />
+                tools:text="₹82,50,000" />
 
             <TextView
                 android:id="@+id/housePlaceDetailed"
@@ -82,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:textAppearance="@style/TextAppearance.App.Body.Medium"
-                tools:text="Amsterdam · 1034 ZH" />
+                tools:text="Sector 62, Noida · 201309" />
 
             <LinearLayout
                 android:layout_width="match_parent"

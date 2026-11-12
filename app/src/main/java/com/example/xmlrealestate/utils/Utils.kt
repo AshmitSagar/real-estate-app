@@ -73,8 +73,8 @@ object Utils {
             Constants.NO_DISTANCE_AVAILABLE
         } else {
             val houseLocation = Location("")
-            houseLocation.latitude = myObject.latitude.toDouble()
-            houseLocation.longitude = myObject.longitude.toDouble()
+            houseLocation.latitude = myObject.latitude
+            houseLocation.longitude = myObject.longitude
             val distanceInMeters = myLocation.distanceTo(houseLocation)
             "%.2f km".format(distanceInMeters / 1000.0)
         }

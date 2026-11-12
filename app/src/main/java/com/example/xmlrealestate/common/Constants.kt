@@ -41,7 +41,6 @@ object Constants {
     const val ABOUT_FRAGMENT_TITLE = "ABOUT"
 
     //House Details Constants
-    const val DOLLAR_CHARACTER = "$"
     const val KM = "km"
     const val NO_DISTANCE_LOCATION_DISABLED = "N/A"
 

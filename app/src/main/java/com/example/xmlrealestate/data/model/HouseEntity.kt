@@ -41,7 +41,7 @@ fun HouseEntity.toHouse(): House = House(
     description = this.description,
     zipCode = this.zipCode,
     city = this.city,
-    latitude = this.latitude,
-    longitude = this.longitude,
+    latitude = this.latitude.toDouble(),
+    longitude = this.longitude.toDouble(),
     creationDate = this.creationDate,
 )
