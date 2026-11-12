@@ -14,7 +14,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.example.xmlrealestate.R
-import com.example.xmlrealestate.common.Constants
 import com.example.xmlrealestate.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
@@ -91,7 +90,6 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home -> {
                     navView.visibility = BottomNavigationView.VISIBLE
                     binding.toolbar.visibility = View.VISIBLE
-                    binding.toolbar.title = Constants.LIST_HOUSES_FRAGMENT_TITLE
                 }
                 R.id.detailedHouseFragment -> {
                     navView.visibility = BottomNavigationView.GONE
