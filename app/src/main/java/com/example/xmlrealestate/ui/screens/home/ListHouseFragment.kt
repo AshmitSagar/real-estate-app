@@ -1,13 +1,12 @@
 package com.example.xmlrealestate.ui.screens.home
 
-
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.SearchView
-import android.widget.TextView
-import android.widget.Toast
+import android.view.inputmethod.EditorInfo
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowCompat
+import androidx.core.view.isVisible
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -15,115 +14,89 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.xmlrealestate.R
-import com.example.xmlrealestate.common.Constants
 import com.example.xmlrealestate.databinding.FragmentListHousesBinding
 import com.example.xmlrealestate.domain.model.House
-import com.example.xmlrealestate.ui.screens.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class ListHouseFragment : Fragment() {
-    private lateinit var binding: FragmentListHousesBinding
-    private lateinit var adapter: HouseAdapter
+class ListHouseFragment : Fragment(R.layout.fragment_list_houses) {
     private val viewModel: ListHouseViewModel by viewModels()
 
-    inner class ListHousesActionsImpl : ListHousesActions {
-        override fun onHouseClicked(house: House) {
-            val action = ListHouseFragmentDirections.actionHomeFragmentToDetailedHouseFragment(
-                house.id.toString()
-            )
-            findNavController().navigate(action)
-        }
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentListHousesBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        defaultResult()
-        configRecyclerView()
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.uiState.collect { state ->
-                    if (state.error != null) {
-                        Toast.makeText(
-                            requireContext(),
-                            Constants.ERROR_TOAST_INDICATOR + state.error,
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                    adapter.submitList(state.houses?.sortedBy {
-                        it.price
-                    })
-                    defaultResult()
+        val binding = FragmentListHousesBinding.bind(view)
+        val adapter = HouseAdapter(object : ListHousesActions {
+            override fun onHouseClicked(house: House) {
+                hideKeyboard(binding)
+                val action = ListHouseFragmentDirections
+                    .actionHomeFragmentToDetailedHouseFragment(house.id.toString())
+                val navController = findNavController()
+                if (navController.currentDestination?.id == R.id.navigation_home) {
+                    navController.navigate(action)
                 }
-            }
-        }
-        configSearchView()
-    }
-
-    private fun configSearchView() {
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                if (adapter.itemCount == 0) {
-                    noResultFound()
-                } else {
-                    defaultResult()
-                }
-                return false
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                adapter.filterList(newText)
-                if (adapter.itemCount == 0) {
-                    noResultFound()
-                } else {
-                    defaultResult()
-                }
-                return false
             }
         })
-        //This is to close the search view when the user clicks the back button
-        binding.searchView.setOnCloseListener {
-            defaultResult()
-            viewModel.handleEvent(ListHouseContract.Event.OnSearchClosed)
-            adapter.submitList(viewModel.uiState.value.houses)
-            false
+        binding.rvHouses.adapter = adapter
+        binding.propertySearch.setText(viewModel.query)
+        binding.propertySearch.doAfterTextChanged { text ->
+            viewModel.query = text.toString()
+            render(binding, adapter, viewModel.uiState.value, resetScroll = true)
+        }
+        binding.propertySearch.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId != EditorInfo.IME_ACTION_SEARCH) {
+                return@setOnEditorActionListener false
+            }
+            hideKeyboard(binding)
+            true
+        }
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.uiState.collect { render(binding, adapter, it) }
+            }
         }
     }
 
-    private fun noResultFound() {
-        binding.imageViewNoResultsFound.visibility = View.VISIBLE
-        binding.textViewNoResultsFound.visibility = View.VISIBLE
-        binding.textViewResultsNoFoundPerhaps.visibility = View.VISIBLE
+    private fun render(
+        binding: FragmentListHousesBinding,
+        adapter: HouseAdapter,
+        state: ListHouseContract.State,
+        resetScroll: Boolean = false
+    ) = with(binding) {
+        val query = viewModel.query.trim()
+        val postalQuery = query.filterNot(Char::isWhitespace)
+        val houses = state.houses.orEmpty()
+        val matches = if (query.isEmpty()) houses else houses.filter { house ->
+            house.city.contains(query, ignoreCase = true) ||
+                house.zipCode.filterNot(Char::isWhitespace).contains(postalQuery, ignoreCase = true)
+        }
+        adapter.submitList(matches) {
+            if (resetScroll) rvHouses.scrollToPosition(0)
+        }
+
+        val isLoading = state.isLoading && houses.isEmpty()
+        resultCount.isVisible = !isLoading && state.error == null && matches.isNotEmpty()
+        resultCount.text = resources.getQuantityString(
+            R.plurals.property_count, matches.size, matches.size
+        )
+        loading.isVisible = isLoading
+        rvHouses.isVisible = matches.isNotEmpty()
+        statusPanel.isVisible = matches.isEmpty() && !isLoading
+        val canClear = query.isNotEmpty() && houses.isNotEmpty()
+        statusMessage.setText(when {
+            state.error != null -> R.string.properties_unavailable
+            canClear -> R.string.property_no_matches
+            else -> R.string.no_properties
+        })
+        statusAction.setText(if (canClear) R.string.clear_property_search else R.string.retry_properties)
+        statusAction.setOnClickListener {
+            if (canClear) propertySearch.text?.clear()
+            else viewModel.handleEvent(ListHouseContract.Event.GetHouses)
+        }
     }
 
-    private fun defaultResult() {
-        binding.imageViewNoResultsFound.visibility = View.GONE
-        binding.textViewNoResultsFound.visibility = View.GONE
-        binding.textViewResultsNoFoundPerhaps.visibility = View.GONE
-    }
-
-    private fun configRecyclerView() {
-        adapter = HouseAdapter(ListHousesActionsImpl())
-        binding.rvHouses.adapter = adapter
-        binding.rvHouses.setHasFixedSize(true)
-    }
-
-    private fun configToolbar() {
-        val toolBarText = (activity as MainActivity).findViewById<TextView>(R.id.toolbar_title)
-        toolBarText.text = Constants.LIST_HOUSES_FRAGMENT_TITLE
-    }
-
-    override fun onResume() {
-        super.onResume()
-        configToolbar()
+    private fun hideKeyboard(binding: FragmentListHousesBinding) {
+        WindowCompat.getInsetsController(requireActivity().window, binding.propertySearch)
+            .hide(WindowInsetsCompat.Type.ime())
+        binding.propertySearch.clearFocus()
     }
 }
-

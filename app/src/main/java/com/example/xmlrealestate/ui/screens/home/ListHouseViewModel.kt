@@ -1,30 +1,31 @@
 package com.example.xmlrealestate.ui.screens.home
 
-import android.annotation.SuppressLint
-import android.content.Context
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.xmlrealestate.common.Constants
 import com.example.xmlrealestate.domain.usecases.house.GetAllHousesUseCase
 import com.example.xmlrealestate.network.NetworkResult
-import com.example.xmlrealestate.utils.Utils
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-@SuppressLint("StaticFieldLeak")
 class ListHouseViewModel @Inject constructor(
-    @ApplicationContext val appContext: Context,
-    private val getAllHousesUseCase: GetAllHousesUseCase
+    private val getAllHousesUseCase: GetAllHousesUseCase,
+    private val savedState: SavedStateHandle
 ) : ViewModel() {
-    private val _uiState = MutableStateFlow(ListHouseContract.State(null, false, null))
-    val uiState: StateFlow<ListHouseContract.State> = _uiState
+    private val state = MutableStateFlow(ListHouseContract.State())
+    val uiState = state.asStateFlow()
+    private var loadJob: Job? = null
+
+    var query: String
+        get() = savedState.get<String>("propertyQuery").orEmpty()
+        set(value) { savedState["propertyQuery"] = value }
 
     init {
         getHouses()
@@ -32,90 +33,28 @@ class ListHouseViewModel @Inject constructor(
 
     fun handleEvent(event: ListHouseContract.Event) {
         when (event) {
-            is ListHouseContract.Event.OnSearchClosed -> {
-                getHouses()
-            }
-            ListHouseContract.Event.GetHouses -> {
-                getHouses()
-            }
-            ListHouseContract.Event.OnErrorShown -> {
-                _uiState.update { it.copy(error = null) }
-            }
+            ListHouseContract.Event.GetHouses -> getHouses()
         }
     }
 
-    /**
-     * Gets the houses checking if the device has internet connection or not.
-     *
-     * *If the device has internet connection, we get the data [getHousesWithInternet]
-     *
-     * *If the device has no internet connection, we get the data [getHousesWithNoInternet]
-     *
-     */
     private fun getHouses() {
-        if (Utils.hasInternetConnection(context = appContext)) {
-            getHousesWithInternet()
-        } else {
-            getHousesWithNoInternet()
-        }
-    }
-
-    /**
-     * Gets the houses, if there is any error, it will be shown in the UI.
-     */
-    private fun getHousesWithInternet() {
-        viewModelScope.launch {
-            getAllHousesUseCase.invoke().catch { e ->
-                _uiState.update { it.copy(error = e.message) }
+        if (loadJob?.isActive == true) return
+        loadJob = viewModelScope.launch {
+            getAllHousesUseCase().catch { error ->
+                state.update { it.copy(isLoading = false, error = error.toString()) }
             }.collect { result ->
                 when (result) {
                     is NetworkResult.Success -> {
-                        _uiState.update {
-                            it.copy(
-                                houses = Utils.calculateDistanceToHouses(
-                                    result.data!!,
-                                    appContext
-                                )
-                            )
-                        }
+                        state.value = ListHouseContract.State(
+                            houses = result.data.orEmpty().sortedBy { it.price },
+                            isLoading = false
+                        )
                     }
                     is NetworkResult.Error -> {
-                        _uiState.update { it.copy(error = result.message) }
+                        state.update { it.copy(isLoading = false, error = result.message.orEmpty()) }
                     }
                     is NetworkResult.Loading -> {
-                        _uiState.update { it.copy(isLoading = true) }
-                    }
-                }
-            }
-        }
-    }
-
-    /**
-     * Gets the houses, with an error message indicating that there is no internet connection.
-     */
-    private fun getHousesWithNoInternet() {
-        viewModelScope.launch {
-            getAllHousesUseCase.invoke().catch { e ->
-                _uiState.update { it.copy(error = e.message) }
-            }.collect { result ->
-                when (result) {
-                    is NetworkResult.Success -> {
-                        _uiState.update {
-                            it.copy(
-                                houses = Utils.calculateDistanceToHouses(
-                                    result.data!!,
-                                    appContext
-                                ),
-                                isLoading = false,
-                                error = Constants.NO_INTERNET_CONNECTION_ERROR
-                            )
-                        }
-                    }
-                    is NetworkResult.Loading -> {
-                        _uiState.update { it.copy(isLoading = true) }
-                    }
-                    is NetworkResult.Error -> {
-                        _uiState.update { it.copy(error = result.message, isLoading = false) }
+                        state.update { it.copy(isLoading = true, error = null) }
                     }
                 }
             }

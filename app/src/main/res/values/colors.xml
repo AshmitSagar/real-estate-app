@@ -10,19 +10,19 @@
 
     <!-- Dark Surface Colors -->
     <color name="espresso_deep">#141311</color>
-    <color name="surface_card">#2A2520</color>
+    <color name="surface_card">#211D19</color>
     <color name="surface_container">#211F1D</color>
     <color name="basalt_obsidian">#0B0C0A</color>
     <color name="input_background">#12100E</color>
 
     <!-- Border Colors -->
-    <color name="border_gold_subtle">#5A4A35</color>
+    <color name="border_gold_subtle">#40372E</color>
     <color name="border_gold_highlight">#8B7355</color>
 
     <!-- Text Colors -->
     <color name="cream_text">#F5F0EB</color>
     <color name="sand_muted">#F0E8E0</color>
-    <color name="smoke_subtle">#E0D5C8</color>
+    <color name="smoke_subtle">#C1B5A7</color>
 
     <!-- Legacy Color Aliases (for compatibility) -->
     <color name="black">#FF000000</color>

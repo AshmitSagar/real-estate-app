@@ -1,116 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/espresso_deep"
-    tools:context=".ui.screens.home.ListHouseFragment">
+    android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvHouses"
-        android:layout_width="410dp"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:clipToPadding="false"
-        android:paddingBottom="80dp"
-        android:background="@android:color/transparent"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
-        app:spanCount="1" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/catalog_gutter"
+        android:layout_marginEnd="@dimen/catalog_gutter"
+        android:layout_marginTop="12dp"
+        android:accessibilityHeading="true"
+        android:text="@string/explore_properties"
+        android:textAppearance="@style/TextAppearance.App.Hero"
+        tools:targetApi="p" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="365dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="16dp"
-        app:cardBackgroundColor="@color/surface_container"
-        app:cardCornerRadius="@dimen/radius_large"
-        app:cardElevation="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/catalog_gutter"
+        android:layout_marginEnd="@dimen/catalog_gutter"
+        android:layout_marginTop="12dp"
+        android:hint="@string/property_search_hint"
+        app:boxBackgroundColor="@color/surface_card"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="@dimen/radius_xl"
+        app:boxCornerRadiusBottomStart="@dimen/radius_xl"
+        app:boxCornerRadiusTopEnd="@dimen/radius_xl"
+        app:boxCornerRadiusTopStart="@dimen/radius_xl"
+        app:boxStrokeColor="@color/catalog_search_stroke"
+        app:endIconMode="clear_text"
+        app:endIconTint="@color/champagne_gold"
+        app:hintTextColor="@color/sand_muted"
+        app:startIconDrawable="@drawable/ic_search"
+        app:startIconTint="@color/champagne_gold">
 
-        <android.widget.SearchView
-            android:id="@+id/searchView"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/propertySearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="5dp"
-            android:layout_marginVertical="5dp"
-            android:closeIcon="@drawable/ic_close"
-            android:iconifiedByDefault="true"
-            android:queryBackground="@android:color/transparent"
-            android:theme="@style/AppSearchView"
-            app:iconifiedByDefault="false"
-            app:queryBackground="@android:color/transparent"
-            app:queryHint="Search for a home" />
-    </androidx.cardview.widget.CardView>
+            android:imeOptions="actionSearch"
+            android:inputType="text"
+            android:maxLines="1"
+            android:saveEnabled="false"
+            android:textColor="@color/cream_text"
+            android:textSize="16sp" />
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/coordinatorLayout"
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/resultCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/catalog_gutter"
+        android:layout_marginEnd="@dimen/catalog_gutter"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="8dp"
+        android:accessibilityLiveRegion="polite"
+        android:textAppearance="@style/TextAppearance.App.Body.Small"
+        tools:text="24 properties" />
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_weight="1">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvHouses"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:clipToPadding="false"
+            android:paddingStart="@dimen/catalog_gutter"
+            android:paddingEnd="@dimen/catalog_gutter"
+            android:paddingBottom="12dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_house" />
 
-            <ImageView
-                android:id="@+id/imageViewNoResultsFound"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:contentDescription="@string/no_result_found"
-                android:src="@mipmap/ic_launcher_foreground"
-                app:tint="@color/smoke_subtle"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0" />
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/loading_properties"
+            android:indeterminateTint="@color/champagne_gold"
+            android:visibility="gone" />
 
-            <TextView
-                android:id="@+id/textViewResultsNoFoundPerhaps"
-                android:layout_width="wrap_content"
-                android:layout_height="36dp"
-                android:text="@string/perhaps_try_another_search"
-                android:textAppearance="@style/TextAppearance.App.Body.Medium"
-                android:textColor="@color/smoke_subtle"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.762" />
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/statusPanel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:visibility="gone">
 
-            <TextView
-                android:id="@+id/text_view_no_results_found"
-                android:layout_width="147dp"
-                android:layout_height="32dp"
-                android:text="@string/no_results_found"
-                android:textAppearance="@style/TextAppearance.App.Body.Medium"
-                android:textColor="@color/smoke_subtle"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.715" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="@dimen/catalog_gutter">
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+                <TextView
+                    android:id="@+id/statusMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:accessibilityLiveRegion="polite"
+                    android:gravity="center"
+                    android:textAppearance="@style/TextAppearance.App.Body.Medium" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/statusAction"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:minHeight="48dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/champagne_gold"
+                    app:strokeColor="@color/border_gold_highlight" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </FrameLayout>
+
+</LinearLayout>

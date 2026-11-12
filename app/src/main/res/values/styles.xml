@@ -4,42 +4,42 @@
 
     <!-- Hero Display Text -->
     <style name="TextAppearance.App.Hero" parent="TextAppearance.MaterialComponents.Headline1">
-        <item name="fontFamily">@font/playfair_display</item>
+        <item name="fontFamily">serif</item>
         <item name="android:textSize">@dimen/text_hero_mobile</item>
         <item name="android:textColor">@color/cream_text</item>
     </style>
 
     <!-- Headline Medium -->
     <style name="TextAppearance.App.Headline.Medium" parent="TextAppearance.MaterialComponents.Headline5">
-        <item name="fontFamily">@font/playfair_display</item>
+        <item name="fontFamily">serif</item>
         <item name="android:textSize">@dimen/text_headline_medium</item>
         <item name="android:textColor">@color/cream_text</item>
     </style>
 
     <!-- Price Text -->
     <style name="TextAppearance.App.Price" parent="TextAppearance.MaterialComponents.Headline6">
-        <item name="fontFamily">@font/playfair_display</item>
+        <item name="fontFamily">serif</item>
         <item name="android:textSize">@dimen/text_headline_small</item>
         <item name="android:textColor">@color/champagne_gold</item>
     </style>
 
     <!-- Body Text Large -->
     <style name="TextAppearance.App.Body.Large" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="fontFamily">@font/inter</item>
+        <item name="fontFamily">sans-serif</item>
         <item name="android:textSize">@dimen/text_body_large</item>
         <item name="android:textColor">@color/sand_muted</item>
     </style>
 
     <!-- Body Text Medium -->
     <style name="TextAppearance.App.Body.Medium" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="fontFamily">@font/inter</item>
+        <item name="fontFamily">sans-serif</item>
         <item name="android:textSize">@dimen/text_body_medium</item>
         <item name="android:textColor">@color/sand_muted</item>
     </style>
 
     <!-- Body Text Small -->
     <style name="TextAppearance.App.Body.Small" parent="TextAppearance.MaterialComponents.Caption">
-        <item name="fontFamily">@font/inter</item>
+        <item name="fontFamily">sans-serif</item>
         <item name="android:textSize">@dimen/text_body_small</item>
         <item name="android:textColor">@color/sand_muted</item>
     </style>
@@ -54,6 +54,29 @@
     </style>
 
     <!-- Component Styles -->
+
+    <style name="Widget.App.PropertyMetric" parent="">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+    </style>
+
+    <style name="Widget.App.PropertyMetric.Value" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAppearance">@style/TextAppearance.App.Price</item>
+    </style>
+
+    <style name="Widget.App.PropertyMetric.Label" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAppearance">@style/TextAppearance.App.Body.Small</item>
+    </style>
 
     <!-- Luxury Card Style -->
     <style name="Widget.App.Card.Luxury" parent="Widget.MaterialComponents.CardView">
@@ -74,7 +97,7 @@
 
     <!-- Toolbar Style -->
     <style name="Widget.App.Toolbar" parent="Widget.MaterialComponents.Toolbar">
-        <item name="background">@color/surface_container</item>
+        <item name="background">@color/espresso_deep</item>
         <item name="titleTextAppearance">@style/TextAppearance.App.Headline.Medium</item>
         <item name="titleTextColor">@color/cream_text</item>
         <item name="elevation">0dp</item>

@@ -1,78 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/espresso_deep"
-    tools:context=".ui.screens.about.AboutFragment">
+    android:background="@color/espresso_deep">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guide"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.59" />
+        android:orientation="vertical"
+        android:padding="@dimen/catalog_gutter">
 
-    <TextView
-        android:id="@+id/about_description"
-        android:layout_width="354dp"
-        android:layout_height="331dp"
-        android:scrollbars="vertical"
-        android:inputType="none"
-        android:text="@string/about_lorem_ipsum"
-        android:textAppearance="@style/TextAppearance.App.Body.Large"
-        app:layout_constraintBottom_toTopOf="@+id/guide"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.886"
-        tools:ignore="TextSizeCheck" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:accessibilityHeading="true"
+            android:text="@string/about_kamlam"
+            android:textAppearance="@style/TextAppearance.App.Hero"
+            tools:targetApi="p" />
 
-    <TextView
-        android:id="@+id/about_credits"
-        android:layout_width="356dp"
-        android:layout_height="76dp"
-        android:inputType="none"
-        android:text="@string/about_developer"
-        android:textAppearance="@style/TextAppearance.App.Headline.Medium"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guide"
-        app:layout_constraintVertical_bias="0.032"
-        tools:ignore="TextSizeCheck" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:lineSpacingExtra="4dp"
+            android:text="@string/catalog_about_description"
+            android:textAppearance="@style/TextAppearance.App.Body.Medium" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="127dp"
-        android:layout_height="51dp"
-        android:src="@drawable/ic_dashboard_black_24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.11"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.784"
-        tools:ignore="ContentDescription" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="168dp"
+            android:layout_height="84dp"
+            android:layout_marginTop="24dp"
+            android:importantForAccessibility="no"
+            android:scaleType="fitCenter"
+            android:src="@drawable/kamlam_logo" />
 
-    <TextView
-        android:id="@+id/aboutDeveloperContact"
-        android:layout_width="106dp"
-        android:layout_height="59dp"
-        android:autoLink="web"
-        android:inputType="none"
-        android:text="@string/by_developer"
-        android:textAppearance="@style/TextAppearance.App.Body.Medium"
-        android:textColor="@color/champagne_gold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.58"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.793"
-        tools:ignore="TextSizeCheck,TextContrastCheck" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/border_gold_subtle" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/aboutDeveloperContact"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:minHeight="48dp"
+            android:text="@string/developer_profile"
+            android:textAllCaps="false"
+            android:textColor="@color/champagne_gold"
+            app:strokeColor="@color/border_gold_highlight" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

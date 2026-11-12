@@ -1,259 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/espresso_deep"
-    tools:context=".ui.screens.detailedHouse.DetailedHouseFragment">
+    android:fillViewport="true">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guide"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.22" />
-
-    <ImageView
-        android:id="@+id/housePhotoDetailed"
-        android:layout_width="match_parent"
-        android:layout_height="198dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/baseline_house_24"
-        tools:ignore="ContentDescription" />
-
-    <com.google.android.material.appbar.AppBarLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        app:elevation="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/guide"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar_detailed_house"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            app:elevation="0dp"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:navigationIcon="@drawable/ic_back"
-            app:navigationIconTint="@color/cream_text" />
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="@color/surface_card"
-        app:cardCornerRadius="@dimen/radius_card_top"
-        app:cardElevation="0dp"
-        app:cardPreventCornerOverlap="false"
-        app:cardUseCompatPadding="true"
-        app:strokeColor="@color/border_gold_subtle"
-        app:strokeWidth="@dimen/border_subtle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guide"
-        app:layout_constraintVertical_bias="0.0">
+        android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="25dp"
-            tools:layout_editor_absoluteY="1dp">
+            android:layout_height="wrap_content"
+            android:background="@color/surface_card">
+
+            <ImageView
+                android:id="@+id/housePhotoDetailed"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="H,16:9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_max="380dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/detailBack"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_margin="14dp"
+                android:background="@drawable/catalog_back_background"
+                android:contentDescription="@string/back_to_properties"
+                android:scaleType="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_back"
+                app:tint="@color/cream_text" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/detailStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:accessibilityLiveRegion="polite"
+            android:gravity="center"
+            android:padding="24dp"
+            android:text="@string/loading_property"
+            android:textAppearance="@style/TextAppearance.App.Body.Medium" />
+
+        <LinearLayout
+            android:id="@+id/detailContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/catalog_gutter"
+            android:paddingEnd="@dimen/catalog_gutter"
+            android:paddingTop="18dp"
+            android:paddingBottom="24dp"
+            android:visibility="gone"
+            tools:visibility="visible">
 
             <TextView
                 android:id="@+id/housePriceDetailed"
-                android:layout_width="149dp"
-                android:layout_height="53dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:accessibilityHeading="true"
                 android:textAppearance="@style/TextAppearance.App.Hero"
-                android:textIsSelectable="false"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.061"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.025" />
+                android:textColor="@color/champagne_gold"
+                tools:targetApi="p"
+                tools:text="$285,000" />
 
             <TextView
-                android:id="@+id/house_distance_number_detailed"
-                android:layout_width="55dp"
-                android:layout_height="14dp"
-                android:textAppearance="@style/TextAppearance.App.Body.Small"
-                android:textColor="@color/smoke_subtle"
-                android:textIsSelectable="false"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.977"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.088" />
+                android:id="@+id/housePlaceDetailed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textAppearance="@style/TextAppearance.App.Body.Medium"
+                tools:text="Amsterdam · 1034 ZH" />
 
-            <ImageView
-                android:id="@+id/bedroomIconDetailed"
-                android:layout_width="14dp"
-                android:layout_height="14dp"
-                android:src="@drawable/ic_bed"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.48"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.087"
-                app:tint="@color/champagne_gold"
-                tools:ignore="ContentDescription" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:baselineAligned="false"
+                android:divider="@drawable/catalog_stat_divider"
+                android:orientation="horizontal"
+                android:showDividers="middle">
 
-            <TextView
-                android:id="@+id/house_bedroom_number_detailed"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:textAppearance="@style/TextAppearance.App.Body.Small"
-                android:textColor="@color/smoke_subtle"
-                android:textIsSelectable="false"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.526"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.087" />
+                <LinearLayout style="@style/Widget.App.PropertyMetric">
 
-            <ImageView
-                android:id="@+id/bathroomIconDetailed"
-                android:layout_width="14dp"
-                android:layout_height="14dp"
-                android:src="@drawable/ic_bath"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.605"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.087"
-                app:tint="@color/champagne_gold"
-                tools:ignore="ContentDescription" />
+                    <TextView
+                        android:id="@+id/houseBedrooms"
+                        style="@style/Widget.App.PropertyMetric.Value"
+                        tools:text="5" />
 
-            <TextView
-                android:id="@+id/house_bathroom_number_detailed"
-                android:layout_width="14dp"
-                android:layout_height="14dp"
-                android:textAppearance="@style/TextAppearance.App.Body.Small"
-                android:textColor="@color/smoke_subtle"
-                android:textIsSelectable="false"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.651"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.087" />
+                    <TextView
+                        style="@style/Widget.App.PropertyMetric.Label"
+                        android:text="@string/property_bedrooms_label" />
 
-            <ImageView
-                android:id="@+id/layers_icon_detailed"
-                android:layout_width="14dp"
-                android:layout_height="14dp"
-                android:src="@drawable/ic_layers"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.73"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.087"
-                app:tint="@color/champagne_gold"
-                tools:ignore="ContentDescription" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/Widget.App.PropertyMetric">
+
+                    <TextView
+                        android:id="@+id/houseBathrooms"
+                        style="@style/Widget.App.PropertyMetric.Value"
+                        tools:text="3" />
+
+                    <TextView
+                        style="@style/Widget.App.PropertyMetric.Label"
+                        android:text="@string/property_bathrooms_label" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/Widget.App.PropertyMetric">
+
+                    <TextView
+                        android:id="@+id/houseArea"
+                        style="@style/Widget.App.PropertyMetric.Value"
+                        tools:text="275 m²" />
+
+                    <TextView
+                        style="@style/Widget.App.PropertyMetric.Label"
+                        android:text="@string/property_area_label" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/house_layers_number_detailed"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:textAppearance="@style/TextAppearance.App.Body.Small"
-                android:textColor="@color/smoke_subtle"
-                android:textIsSelectable="false"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.777"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.087" />
-
-            <ImageView
-                android:id="@+id/ubication_icon_detailed"
-                android:layout_width="14dp"
-                android:layout_height="14dp"
-                android:src="@drawable/ic_location"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.839"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.087"
-                app:tint="@color/champagne_gold"
-                tools:ignore="ContentDescription" />
-
-            <TextView
-                android:id="@+id/descriptionText"
-                android:layout_width="211dp"
-                android:layout_height="41dp"
-                android:text="@string/description"
+                android:id="@+id/descriptionHeading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:accessibilityHeading="true"
+                android:text="@string/about_this_property"
                 android:textAppearance="@style/TextAppearance.App.Headline.Medium"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.081"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.137" />
-
-            <TextView
-                android:id="@+id/locationText"
-                android:layout_width="207dp"
-                android:layout_height="42dp"
-                android:text="@string/location"
-                android:textAppearance="@style/TextAppearance.App.Headline.Medium"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.079"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.605" />
+                tools:targetApi="p" />
 
             <TextView
                 android:id="@+id/descriptionDetailedTextView"
-                android:layout_width="346dp"
-                android:layout_height="184dp"
-                android:layout_marginHorizontal="0dp"
-                android:textAppearance="@style/TextAppearance.App.Body.Large"
-                android:scrollbars="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.488"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.317" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:textAppearance="@style/TextAppearance.App.Body.Medium" />
 
-            <com.google.android.gms.maps.MapView
-                android:id="@+id/mapViewHouseLocation"
-                android:layout_width="350dp"
-                android:layout_height="183dp"
-                android:contentDescription="@string/map_of_the_house_location"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.487"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.96"
-                map:uiRotateGestures="false"
-                map:uiZoomControls="false" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="22dp"
+                android:background="@color/border_gold_subtle" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:accessibilityHeading="true"
+                android:text="@string/location"
+                android:textAppearance="@style/TextAppearance.App.Headline.Medium"
+                tools:targetApi="p" />
+
+            <TextView
+                android:id="@+id/houseDistanceDetailed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:textAppearance="@style/TextAppearance.App.Body.Small" />
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.App.Card.Luxury"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="@dimen/radius_xl">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.google.android.gms.maps.MapView
+                        android:id="@+id/mapViewHouseLocation"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:importantForAccessibility="noHideDescendants"
+                        app:liteMode="true" />
+
+                    <TextView
+                        android:id="@+id/mapFallback"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/surface_card"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:text="@string/map_preview_unavailable"
+                        android:textAppearance="@style/TextAppearance.App.Body.Small" />
+
+                </FrameLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/openMap"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:minHeight="48dp"
+                android:text="@string/open_in_maps"
+                android:textAllCaps="false"
+                android:textColor="@color/champagne_gold"
+                app:icon="@drawable/ic_location"
+                app:iconGravity="textStart"
+                app:iconTint="@color/champagne_gold"
+                app:strokeColor="@color/border_gold_highlight" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

@@ -10,8 +10,6 @@ import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
 import com.example.xmlrealestate.R
 import com.example.xmlrealestate.databinding.ActivityMainBinding
@@ -22,7 +20,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
     private lateinit var navView: BottomNavigationView
 
@@ -70,17 +67,6 @@ class MainActivity : AppCompatActivity() {
     private fun configBottomNavMenuActions() {
         navController = findNavController(R.id.nav_host_fragment_activity_main)
         navView.setupWithNavController(navController)
-        navView.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.navigation_home_menu -> {
-                    navController.navigate(R.id.navigation_home)
-                }
-                R.id.navigation_info_menu -> {
-                    navController.navigate(R.id.navigation_info)
-                }
-            }
-            true
-        }
     }
 
     //This method is used to handle the visibility of the bottom navigation menu and the toolbar.
@@ -108,7 +94,6 @@ class MainActivity : AppCompatActivity() {
 
     //This method is used to handle the back button press.
     override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

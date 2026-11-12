@@ -22,7 +22,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/surface_container"
+                android:background="@color/espresso_deep"
                 style="@style/Widget.App.Toolbar">
 
                 <TextView
@@ -30,7 +30,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="@dimen/catalog_gutter"
                     android:text="@string/dtt_real_estate"
                     android:textAppearance="@style/TextAppearance.App.Price"
                     android:textSize="20sp"

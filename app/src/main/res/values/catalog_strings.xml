@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="explore_tab">Explore</string>
+    <string name="explore_properties">Explore properties</string>
+    <string name="property_search_hint">City or postal code</string>
+    <string name="loading_properties">Loading properties</string>
+    <string name="loading_property">Loading property…</string>
+    <string name="properties_unavailable">Properties couldn’t be loaded.</string>
+    <string name="property_unavailable">This property couldn’t be loaded.</string>
+    <string name="no_properties">There are no properties available right now.</string>
+    <string name="property_no_matches">No matches. Try another city or postal code.</string>
+    <string name="retry_properties">Try again</string>
+    <string name="clear_property_search">Clear search</string>
+    <string name="back_to_properties">Back to properties</string>
+    <string name="about_this_property">About this property</string>
+    <string name="open_in_maps">Open in Maps</string>
+    <string name="map_preview_unavailable">Map preview unavailable</string>
+    <string name="map_open_failed">No app can open this location.</string>
+    <string name="property_distance">%1$s away</string>
+    <string name="property_place">%1$s · %2$s</string>
+    <string name="property_specs">%1$s · %2$s · %3$d m²</string>
+    <string name="property_bedrooms_label">Bedrooms</string>
+    <string name="property_bathrooms_label">Bathrooms</string>
+    <string name="property_area_label">Total area</string>
+    <string name="property_area_value">%d m²</string>
+    <string name="about_kamlam">About Kamlam Estates</string>
+    <string name="catalog_about_description">Browse properties by city or postal code, compare their details, and find them on the map.</string>
+    <string name="developer_profile">Developer profile</string>
+    <string name="profile_open_failed">No app can open the developer profile.</string>
+
+    <plurals name="property_count">
+        <item quantity="one">%d property</item>
+        <item quantity="other">%d properties</item>
+    </plurals>
+    <plurals name="property_beds">
+        <item quantity="one">%d bed</item>
+        <item quantity="other">%d beds</item>
+    </plurals>
+    <plurals name="property_baths">
+        <item quantity="one">%d bath</item>
+        <item quantity="other">%d baths</item>
+    </plurals>
+</resources>

@@ -24,9 +24,9 @@
         android:name="com.example.xmlrealestate.ui.screens.detailedHouse.DetailedHouseFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_detailed_house">
-        <action
-            android:id="@+id/actionDetailedHouseFragmentToHomeFragment"
-            app:destination="@+id/navigation_home_menu" />
+        <argument
+            android:name="houseId"
+            app:argType="string" />
     </fragment>
 
     <fragment
