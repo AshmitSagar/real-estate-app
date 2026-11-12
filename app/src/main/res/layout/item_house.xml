@@ -74,9 +74,10 @@
             android:textIsSelectable="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/houseImageView"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.42" />
+            app:layout_constraintVertical_bias="0.626" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/houseImageView"
@@ -108,8 +109,8 @@
 
         <TextView
             android:id="@+id/house_bedroom_number"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.App.Body.Small"
             android:textColor="@color/smoke_subtle"
             android:textIsSelectable="false"
@@ -136,8 +137,8 @@
 
         <TextView
             android:id="@+id/house_bathroom_number"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.App.Body.Small"
             android:textColor="@color/smoke_subtle"
             android:textIsSelectable="false"
@@ -150,8 +151,8 @@
 
         <TextView
             android:id="@+id/house_meters_number"
-            android:layout_width="20dp"
-            android:layout_height="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.App.Body.Small"
             android:textColor="@color/smoke_subtle"
             android:textIsSelectable="false"
