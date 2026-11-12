@@ -28,7 +28,7 @@ object Constants {
     const val HOUSES_DATABASE = "houses_database"
 
     //AboutFragment Constants
-    const val GITHUB_PROFILE_URL = "https://github.com/juanriqu"
+    const val GITHUB_PROFILE_URL = "https://github.com/Ayush-HelloWorld"
 
     //AuthInterceptor Constants
     const val API_KEY_HEADER = "Access-Key"
@@ -37,7 +37,7 @@ object Constants {
     const val HOUSE_ID_ARG = "houseId"
 
     //Fragments Titles
-    const val LIST_HOUSES_FRAGMENT_TITLE = "DTT REAL ESTATE"
+    const val LIST_HOUSES_FRAGMENT_TITLE = "Kamlam Estates"
     const val ABOUT_FRAGMENT_TITLE = "ABOUT"
 
     //House Details Constants

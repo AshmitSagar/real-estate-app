@@ -30,7 +30,7 @@ class AboutFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         configTopAppBar()
-        binding.imageView.load(R.drawable.dtt_banner)
+        binding.imageView.load(R.drawable.kamlam_logo)
         configAboutDeveloper()
     }
 

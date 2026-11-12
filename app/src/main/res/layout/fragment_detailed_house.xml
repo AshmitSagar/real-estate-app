@@ -77,16 +77,16 @@
 
             <TextView
                 android:id="@+id/housePriceDetailed"
-                android:layout_width="139dp"
-                android:layout_height="24dp"
+                android:layout_width="149dp"
+                android:layout_height="53dp"
                 android:textAppearance="@style/TextAppearance.App.Hero"
                 android:textIsSelectable="false"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.084"
+                app:layout_constraintHorizontal_bias="0.061"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.076" />
+                app:layout_constraintVertical_bias="0.025" />
 
             <TextView
                 android:id="@+id/house_distance_number_detailed"
@@ -202,21 +202,21 @@
 
             <TextView
                 android:id="@+id/descriptionText"
-                android:layout_width="125dp"
-                android:layout_height="26dp"
+                android:layout_width="211dp"
+                android:layout_height="41dp"
                 android:text="@string/description"
                 android:textAppearance="@style/TextAppearance.App.Headline.Medium"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.08"
+                app:layout_constraintHorizontal_bias="0.081"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.153" />
+                app:layout_constraintVertical_bias="0.137" />
 
             <TextView
                 android:id="@+id/locationText"
-                android:layout_width="125dp"
-                android:layout_height="26dp"
+                android:layout_width="207dp"
+                android:layout_height="42dp"
                 android:text="@string/location"
                 android:textAppearance="@style/TextAppearance.App.Headline.Medium"
                 app:layout_constraintBottom_toBottomOf="parent"

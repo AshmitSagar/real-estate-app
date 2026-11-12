@@ -46,7 +46,8 @@ class HouseAdapter(
             houseBedroomNumber.text = house.bedrooms.toString()
             houseMetersNumber.text = house.size.toString()
             houseImageView.load(imageUrl)
-            kmNumberTextView.text = house.distance.toString()
+            val distanceKm = house.distance?.replace(" km", "")?.toDoubleOrNull()?.toInt() ?: 0
+            kmNumberTextView.text = "$distanceKm km"
             cardViewHouse.setOnClickListener {
                 actions.onHouseClicked(house)
             }
